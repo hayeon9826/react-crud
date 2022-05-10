@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../Button'
-import { Container, PaddingContainer, Title, FlexDiv, GridDiv, PostCard } from './styles'
+import { Container, PaddingContainer, Title, FlexDiv, GridDiv, PostCard, Date, PostTitle, PostBody } from './styles'
 
 const data = [
     {
@@ -36,7 +36,15 @@ const List:React.FC = () => {
             </FlexDiv>
             <GridDiv>
                 {data && data.map((data) => (
-                    <PostCard>{data.body}</PostCard>
+                    <PostCard key={data.id}>
+                        <FlexDiv>
+                            <Title>{data.user}</Title>
+                            <Date>{data.date}</Date>
+                        </FlexDiv>
+                        
+                        <PostTitle>{data.title}</PostTitle>
+                        <PostBody>{data.body}</PostBody>
+                    </PostCard>
                 ))}
             </GridDiv>
         </PaddingContainer>

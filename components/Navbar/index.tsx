@@ -1,12 +1,12 @@
 import React from 'react'
-import { Nav, Ul, Li, ListText } from './styles'
+import { Nav, Ul, Li, ListText, LogoText } from './styles'
 
 const Navbar:React.FC = () => {
     return (
         <Nav>
             <Ul>
                 <Li>
-                    <h2>FINDA</h2>
+                    <LogoText>finda</LogoText>
                 </Li>
                 <Li>
                     <ListText>오토렌트·리스</ListText>

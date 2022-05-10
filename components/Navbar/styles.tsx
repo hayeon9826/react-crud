@@ -61,3 +61,7 @@ export const ListText = styled.a`
       }
 
 `
+
+export const LogoText = styled.h2`
+    font-family: revert, system-ui;
+`;

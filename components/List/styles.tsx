@@ -39,6 +39,29 @@ export const GridDiv = styled.div`
     margin-top: 4rem;
 `;
 
+export const Date = styled.span`
+    color: #767676;
+    font-size: 14px;
+    margin-left: 10px;
+    line-height: 21px;
+    font-weight: 400;
+    @media (max-width:400px){
+        line-height: 16px;
+    }
+`;
+
+export const PostTitle = styled.div`
+    color: #767676;
+    margin-top: 10px;
+`;
+
+export const PostBody = styled.div`
+    margin-top: 18px;
+    line-height: 1.6;
+    overflow: hidden;
+`;
+
+
 export const PostCard = styled.div`
     box-shadow: 0 16px 28px hsl(0deg 0% 92% / 80%);
     margin: 0 0 1.25rem!important;
@@ -58,4 +81,8 @@ export const PostCard = styled.div`
     display: block;\outline: 2px solid transparent;
     outline-offset: 2px;
     padding: 1.5rem;
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    
 `;
