@@ -30,3 +30,32 @@ export const FlexDiv = styled.div`
     justify-content: space-between;
     display: flex;
 `;
+
+
+export const GridDiv = styled.div`
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+`;
+
+export const PostCard = styled.div`
+    box-shadow: 0 16px 28px hsl(0deg 0% 92% / 80%);
+    margin: 0 0 1.25rem!important;
+    width: 380px!important;
+    height: 300px;
+    cursor: pointer;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform,-webkit-transform;
+    transition-timing-function: linear;
+    transition-duration: .15s;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    background: white;
+    border-radius: 0.5rem;
+    --bg-opacity: 1;position: relative;
+    display: block;\outline: 2px solid transparent;
+    outline-offset: 2px;
+    padding: 1.5rem;
+`;
