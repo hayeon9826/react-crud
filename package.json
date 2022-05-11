@@ -18,17 +18,24 @@
   "bugs": {
     "url": "https://github.com/hayeon9826/react-crud/issues"
   },
+  "proxy": "http://localhost:3000",
   "homepage": "https://github.com/hayeon9826/react-crud#readme",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@reduxjs/toolkit": "^1.8.1",
     "@types/json-server": "^0.14.4",
+    "@types/redux-actions": "^2.6.2",
+    "axios": "^0.27.2",
+    "cross-env": "^7.0.3",
+    "immutable": "^4.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.3.1",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
+    "redux-actions": "^2.6.5",
+    "redux-pender": "^2.0.12",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {

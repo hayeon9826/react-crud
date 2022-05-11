@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   Container,
   PaddingContainer,
@@ -15,6 +15,13 @@ import {
 } from './styles';
 
 const PostNew: React.FC = () => {
+  const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  useEffect(() => {
+    if (inputRef && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
     <div>
       <Container>
@@ -26,7 +33,7 @@ const PostNew: React.FC = () => {
             <FormBox>
               <FormGroup>
                 <Label htmlFor="label">사용자</Label>
-                <Input id="label" placeholder="사용자 이름을 입력해 주세요" />
+                <Input id="label" placeholder="사용자 이름을 입력해 주세요" ref={inputRef} />
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="label">제목</Label>

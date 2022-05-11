@@ -1,10 +1,10 @@
 import React from 'react';
 import { ButtonStyle } from './styles';
 
-const Button: React.FC = () => {
+const Button = ({ buttonText }: any) => {
   return (
     <>
-      <ButtonStyle>후기 작성하기</ButtonStyle>
+      <ButtonStyle>{buttonText}</ButtonStyle>
     </>
   );
 };

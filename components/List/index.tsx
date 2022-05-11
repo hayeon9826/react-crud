@@ -45,7 +45,7 @@ const List: React.FC = () => {
         <FlexDiv>
           <Title>전체 후기</Title>
           <Link to="/posts/new">
-            <Button />
+            <Button buttonText={'후기 작성하기'} />
           </Link>
         </FlexDiv>
         <GridDiv>
