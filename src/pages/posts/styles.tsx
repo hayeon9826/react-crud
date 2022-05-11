@@ -31,22 +31,76 @@ export const FlexDiv = styled.div`
   display: flex;
 `;
 
-export const GridDiv = styled.div`
-  justify-content: space-between;
-  display: flex;
-  flex-wrap: wrap;
+export const PostDiv = styled.div`
   margin-top: 4rem;
 `;
 
-export const Date = styled.span`
-  color: #767676;
-  font-size: 14px;
-  margin-left: 10px;
-  line-height: 21px;
-  font-weight: 400;
+export const FormDiv = styled.div`
+  margin-top: 4rem;
+`;
+
+export const FormBox = styled.div`
+  background: white;
+  width: 580px;
   @media (max-width: 400px) {
-    line-height: 16px;
+    width: 100%;
   }
+  margin: 0 auto;
+  padding: 20px;
+`;
+
+export const FormGroup = styled.div`
+  margin: 0 auto;
+  display: block;
+  width: 480px;
+  @media (max-width: 400px) {
+    width: 100%;
+  }
+  padding: 20px 10px;
+`;
+
+export const Label = styled.label`
+  margin-bottom: 0.2em;
+  display: block;
+  font-weight: 700;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-bottom: 1px solid #d5d5d5;
+`;
+
+export const TextArea = styled.textarea`
+  width: 100%;
+  height: 100px;
+  border: none;
+  border-bottom: 1px solid #d5d5d5;
+`;
+
+export const Message = styled.label`
+  margin-bottom: 0.5em;
+  display: block;
+  color: palevioletred;
+  font-size: 14px;
+`;
+
+export const SubmitBox = styled.div`
+  margin-top: 40px;
+  text-align: center;
+`;
+
+export const SubmitButton = styled.button`
+  width: 150px;
+  height: 48px;
+  line-height: 47px;
+  font-size: 16px;
+  color: #fff;
+  border-color: #4f63d2;
+  background-color: #4f63d2;
+  border-radius: 4px;
+  border: none;
 `;
 
 export const PostTitle = styled.div`
@@ -58,13 +112,18 @@ export const PostBody = styled.div`
   margin-top: 18px;
   line-height: 1.6;
   overflow: hidden;
+  padding-bottom: 20px;
 `;
 
 export const PostCard = styled.div`
   box-shadow: 0 16px 28px hsl(0deg 0% 92% / 80%);
-  margin: 0 0 1.25rem !important;
-  width: 380px !important;
-  height: 300px;
+  margin: 0 auto !important;
+  width: 580px;
+  @media (max-width: 400px) {
+    width: 100%;
+  }
+  min-height: 400px;
+  height: 100%;
   cursor: pointer;
   transition-property: -webkit-transform;
   transition-property: transform;
@@ -95,5 +154,20 @@ export const More = styled.div`
   color: #a1a1a1;
   margin-right: 0.125rem;
   font-size: 13px;
-  text-decoration: underline;
+  text-decoration: none;
+  a {
+    color: #a1a1a1;
+    text-decoration: none;
+  }
+`;
+
+export const Date = styled.span`
+  color: #767676;
+  font-size: 14px;
+  margin-left: 10px;
+  line-height: 21px;
+  font-weight: 400;
+  @media (max-width: 400px) {
+    line-height: 16px;
+  }
 `;

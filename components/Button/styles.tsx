@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ButtonStyle = styled.button`
-  background: #4F63D2;
+  background: #4f63d2;
   color: #fff;
   font-size: 1em;
   padding: 0.5em 2em;
@@ -9,7 +9,7 @@ export const ButtonStyle = styled.button`
   border: none;
   cursor: pointer;
   font-weight: 500;
-  @media (max-width:400px){
+  @media (max-width: 400px) {
     font-size: 14px;
   }
 `;
