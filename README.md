@@ -62,3 +62,4 @@ yarn webpack
 - [Redux-saga 튜토리얼](https://mskims.github.io/redux-saga-in-korean/introduction/BeginnerTutorial.html)
 - [redux toolkit crud example](https://www.bezkoder.com/redux-toolkit-example-crud/)
 - [Json-server 이해하기](https://redux-advanced.vlpt.us/3/01.html)
+- [Redux-Saga 설명 영상 (FE Conference, Toss)](https://www.youtube.com/watch?v=UxpREAHZ7Ck)

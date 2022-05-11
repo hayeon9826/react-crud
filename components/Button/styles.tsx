@@ -9,7 +9,7 @@ export const ButtonStyle = styled.button`
   border: none;
   cursor: pointer;
   font-weight: 500;
-  @media (max-width: 400px) {
+  @media only screen and (max-width: 600px) {
     font-size: 14px;
   }
 `;

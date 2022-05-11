@@ -20,7 +20,7 @@ export const PaddingContainer = styled.div`
 
 export const Title = styled.h2`
   font-size: 21px;
-  @media (max-width: 400px) {
+  @media only screen and (max-width: 600px) {
     font-size: 16px;
   }
   font-weight: 700;
@@ -44,7 +44,7 @@ export const Date = styled.span`
   margin-left: 10px;
   line-height: 21px;
   font-weight: 400;
-  @media (max-width: 400px) {
+  @media only screen and (max-width: 600px) {
     line-height: 16px;
   }
 `;
@@ -64,6 +64,9 @@ export const PostCard = styled.div`
   box-shadow: 0 16px 28px hsl(0deg 0% 92% / 80%);
   margin: 0 0 1.25rem !important;
   width: 380px !important;
+  @media only screen and (max-width: 800px) {
+    width: 100% !important;
+  }
   height: 300px;
   cursor: pointer;
   transition-property: -webkit-transform;
@@ -78,7 +81,7 @@ export const PostCard = styled.div`
   --bg-opacity: 1;
   position: relative;
   display: block;
-  \outline: 2px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   padding: 1.5rem;
   align-items: flex-start;

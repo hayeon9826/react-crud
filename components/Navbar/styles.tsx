@@ -43,7 +43,7 @@ export const Li = styled.li`
 `;
 
 export const ListText = styled.a`
-  @media (max-width: 400px) {
+  @media only screen and (max-width: 600px) {
     display: none;
   }
   font-size: 15px;

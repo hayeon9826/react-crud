@@ -20,7 +20,7 @@ export const PaddingContainer = styled.div`
 
 export const Title = styled.h2`
   font-size: 21px;
-  @media (max-width: 400px) {
+  @media only screen and (max-width: 600px) {
     font-size: 16px;
   }
   font-weight: 700;
@@ -42,7 +42,7 @@ export const FormDiv = styled.div`
 export const FormBox = styled.div`
   background: white;
   width: 580px;
-  @media (max-width: 400px) {
+  @media only screen and (max-width: 600px) {
     width: 100%;
   }
   margin: 0 auto;
@@ -53,7 +53,7 @@ export const FormGroup = styled.div`
   margin: 0 auto;
   display: block;
   width: 480px;
-  @media (max-width: 400px) {
+  @media only screen and (max-width: 600px) {
     width: 100%;
   }
   padding: 20px 10px;
@@ -93,6 +93,10 @@ export const SubmitBox = styled.div`
 
 export const SubmitButton = styled.button`
   width: 150px;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    font-size: 14px;
+  }
   height: 48px;
   line-height: 47px;
   font-size: 16px;
@@ -119,7 +123,7 @@ export const PostCard = styled.div`
   box-shadow: 0 16px 28px hsl(0deg 0% 92% / 80%);
   margin: 0 auto !important;
   width: 580px;
-  @media (max-width: 400px) {
+  @media only screen and (max-width: 600px) {
     width: 100%;
   }
   min-height: 400px;
@@ -167,7 +171,7 @@ export const Date = styled.span`
   margin-left: 10px;
   line-height: 21px;
   font-weight: 400;
-  @media (max-width: 400px) {
+  @media only screen and (max-width: 600px) {
     line-height: 16px;
   }
 `;
