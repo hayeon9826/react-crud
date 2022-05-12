@@ -63,3 +63,6 @@ yarn webpack
 - [redux toolkit crud example](https://www.bezkoder.com/redux-toolkit-example-crud/)
 - [Json-server 이해하기](https://redux-advanced.vlpt.us/3/01.html)
 - [Redux-Saga 설명 영상 (FE Conference, Toss)](https://www.youtube.com/watch?v=UxpREAHZ7Ck)
+- [Redux toolkit 사내 도큐](https://findainc.atlassian.net/wiki/spaces/FF/pages/2689302595/Redux+Toolkit)
+- [Redux saga 사내 도큐](https://findainc.atlassian.net/wiki/spaces/FF/pages/2757230660/redux-saga+tutorial)
+- [Redux toolkit + redux saga](https://blog.logrocket.com/smarter-redux-redux-toolkit/)

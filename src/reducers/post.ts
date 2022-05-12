@@ -32,6 +32,7 @@ const GET_POSTS = 'post/GET_POSTS';
 const UPDATE_POST = 'post/UPDATE_POST';
 const DELETE_POST = 'post/DELETE_POST';
 
+// createSlice로 합치는 작업 필요, type 재정의
 export const createPost = createAction(ADD_POST, API.createPost);
 export const listPosts = createAction(GET_POSTS, API.getPosts);
 export const updatePost = createAction(UPDATE_POST, API.updatePost); // { id, post: {title,body,user,date} }
