@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   --bg-opacity: 1;
   background-color: #f5f6fa;
-  height: 150vh;
+  min-height: 150vh;
 `;
 
 export const PaddingContainer = styled.div`
@@ -34,8 +34,13 @@ export const FlexDiv = styled.div`
 export const GridDiv = styled.div`
   justify-content: space-between;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   margin-top: 4rem;
+  &::after {
+    content: '';
+    flex: 0 0 32%;
+    max-width: 480px;
+  }
 `;
 
 export const Date = styled.span`

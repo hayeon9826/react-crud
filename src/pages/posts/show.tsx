@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   PaddingContainer,
@@ -11,9 +11,53 @@ import {
   PostBody,
   More
 } from './styles';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { BASE_URL } from '../../../src/lib/api';
+import { deletePost, removePost } from '../../reducers/post';
 
 const PostShow: React.FC = () => {
+  const [post, setPost] = useState({
+    id: 0,
+    user: '',
+    title: '',
+    body: '',
+    date: ''
+  });
+  const params = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const fetch = async () => {
+      // redux 사용해서 가져오기로 변경 필요
+      const res = await axios({
+        method: 'get',
+        url: `${BASE_URL}/post/${params.id}`,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
+      // const res = await listPosts();
+      await setPost(res.data);
+    };
+    if (params.id) {
+      fetch();
+    }
+  }, [params]);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleDelete = async () => {
+    post.id !== 0 && (await dispatch(removePost(post.id)), await dispatch(deletePost(post.id)));
+    navigate('/', { replace: true });
+  };
   return (
     <div>
       <Container>
@@ -23,25 +67,26 @@ const PostShow: React.FC = () => {
           </FlexDiv>
           <PostDiv>
             <PostCard>
-              <FlexDiv>
-                <Title>이핀다</Title>
-                <Date>2022-05-10</Date>
-                <More>
-                  <Link to={`/posts/edit/1`}>
-                    <u>수정</u>
-                  </Link>
-                  ·<u>삭제</u>
-                </More>
-              </FlexDiv>
-              <PostTitle>앱 사용 후기</PostTitle>
-              <PostBody>
-                2금융권 대출을 청산하고 1금융권으로 대출을 갈아탔습니다. 2금융권에 한번 대출을 받은
-                뒤로 1금융권은 아예 한도자체가 없어 최대 18%고금리를 이용했었는데 광주은행 6%대로
-                여러번의 대환대출 끝에 안착했습니다. 감사합니다. 2금융권 대출을 청산하고 1금융권으로
-                대출을 갈아탔습니다. 2금융권에 한번 대출을 받은 뒤로 1금융권은 아예 한도자체가 없어
-                최대 18%고금리를 이용했었는데 광주은행 6%대로 여러번의 대환대출 끝에 안착했습니다.
-                감사합니다.
-              </PostBody>
+              {post ? (
+                <>
+                  <FlexDiv>
+                    <Title>{post?.user}</Title>
+                    <Date>{post?.date}</Date>
+                    <More>
+                      <Link to={`/posts/edit/${post?.id}`}>
+                        <u>수정</u>
+                      </Link>
+                      ·<u onClick={() => handleDelete()}>삭제</u>
+                    </More>
+                  </FlexDiv>
+                  <PostTitle>{post?.title}</PostTitle>
+                  <PostBody>{post?.body}</PostBody>
+                </>
+              ) : (
+                <>
+                  <h2>후기가 없습니다. 다시 시도해주세요.</h2>
+                </>
+              )}
             </PostCard>
           </PostDiv>
         </PaddingContainer>

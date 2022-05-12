@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import postReducer from './modules/post';
+import posts from './reducers/post';
+import form from './reducers/form';
 
 export const store = configureStore({
   reducer: {
-    posts: postReducer
-  }
+    posts,
+    form
+  },
+  devTools: process.env.NODE_ENV !== 'production'
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -105,6 +105,7 @@ export const SubmitButton = styled.button`
   background-color: #4f63d2;
   border-radius: 4px;
   border: none;
+  cursor: pointer;
 `;
 
 export const PostTitle = styled.div`

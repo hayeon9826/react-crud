@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
 import {
@@ -13,6 +13,8 @@ import {
   PostBody,
   More
 } from './styles';
+import { getData } from '../../src/lib/api';
+import { Post } from '../../interface';
 
 const data = [
   {
@@ -39,6 +41,17 @@ const data = [
 ];
 
 const List: React.FC = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const res = await getData();
+      await setPosts(res);
+    };
+
+    fetch();
+  }, []);
+
   return (
     <Container>
       <PaddingContainer>
@@ -49,20 +62,34 @@ const List: React.FC = () => {
           </Link>
         </FlexDiv>
         <GridDiv>
-          {data &&
-            data.map((data) => (
-              <PostCard key={data.id}>
-                <FlexDiv>
-                  <Title>{data.user}</Title>
-                  <Date>{data.date}</Date>
-                  <Link to={`/posts/${data.id}`}>
-                    <More>더보기</More>
-                  </Link>
-                </FlexDiv>
-                <PostTitle>{data.title}</PostTitle>
-                <PostBody>{data.body}</PostBody>
-              </PostCard>
-            ))}
+          {posts && posts.length
+            ? posts.map((data: Post) => (
+                <PostCard key={data.id}>
+                  <FlexDiv>
+                    <Title>{data.user}</Title>
+                    <Date>{data.date}</Date>
+                    <Link to={`/posts/${data.id}`}>
+                      <More>더보기</More>
+                    </Link>
+                  </FlexDiv>
+                  <PostTitle>{data.title}</PostTitle>
+                  <PostBody>{data.body}</PostBody>
+                </PostCard>
+              ))
+            : data &&
+              data.map((data: Post) => (
+                <PostCard key={data.id}>
+                  <FlexDiv>
+                    <Title>{data.user}</Title>
+                    <Date>{data.date}</Date>
+                    <Link to={`/posts/${data.id}`}>
+                      <More>더보기</More>
+                    </Link>
+                  </FlexDiv>
+                  <PostTitle>{data.title}</PostTitle>
+                  <PostBody>{data.body}</PostBody>
+                </PostCard>
+              ))}
         </GridDiv>
       </PaddingContainer>
     </Container>
