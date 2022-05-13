@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Nav, Ul, Li, ListText, LogoText } from './styles';
 
 const Navbar: React.FC = () => {

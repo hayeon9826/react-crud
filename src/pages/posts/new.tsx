@@ -15,10 +15,11 @@ import {
 } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setFormSlice } from '../../reducers/form';
-import { addPost, createPost } from '../../reducers/post';
+import { setFormSlice } from '../../slices/form';
+import { addPost, createPost } from '../../slices/post';
 import dayjs from 'dayjs';
 import { RootState, AppDispatch } from '../../../src/store';
+import { toast } from 'react-toastify';
 
 const PostNew: React.FC = () => {
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -39,33 +40,46 @@ const PostNew: React.FC = () => {
     };
 
   const handleSubmit = async () => {
-    form.id === 0 &&
-      (await dispatch(
-        addPost({
-          user: form.user,
-          title: form.title,
-          body: form.body,
-          date: dayjs().format('YYYY-MM-DD')
-        })
-      ),
+    try {
+      form.id === 0 &&
+        (await dispatch(
+          addPost({
+            user: form.user,
+            title: form.title,
+            body: form.body,
+            date: dayjs().format('YYYY-MM-DD')
+          })
+        ),
+        await dispatch(
+          createPost({
+            user: form.user,
+            title: form.title,
+            body: form.body,
+            date: dayjs().format('YYYY-MM-DD')
+          })
+        ));
+      // 후기 생성 후 form 리셋
       await dispatch(
-        createPost({
-          user: form.user,
-          title: form.title,
-          body: form.body,
-          date: dayjs().format('YYYY-MM-DD')
+        setFormSlice({
+          id: 0,
+          user: '',
+          title: '',
+          body: '',
+          date: ''
         })
-      ));
-    await dispatch(
-      setFormSlice({
-        id: 0,
-        user: '',
-        title: '',
-        body: '',
-        date: ''
-      })
-    );
-    navigate('/', { replace: true });
+      );
+      await toast.success('후기를 작성했습니다.', {
+        position: 'top-right',
+        autoClose: 1000
+      });
+      navigate('/', { replace: true });
+    } catch (e) {
+      await toast.error('문제가 발생했습니다. 다시 시도해주세요.', {
+        position: 'top-right',
+        autoClose: 1000
+      });
+      navigate('/', { replace: true });
+    }
   };
 
   return (

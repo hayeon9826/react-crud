@@ -11,10 +11,15 @@ import {
   Date,
   PostTitle,
   PostBody,
-  More
+  More,
+  BlankCard,
+  CenterText
 } from './styles';
 import { getData } from '../../src/lib/api';
 import { Post } from '../../interface';
+import { useDispatch, useSelector } from 'react-redux';
+import { sagaActions } from '../../src/sagas/sagaAction';
+import { RootState } from 'src/store';
 
 const data = [
   {
@@ -41,15 +46,12 @@ const data = [
 ];
 
 const List: React.FC = () => {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch();
+  const posts = useSelector((state: RootState) => state.posts);
 
   useEffect(() => {
-    const fetch = async () => {
-      const res = await getData();
-      await setPosts(res);
-    };
-
-    fetch();
+    dispatch({ type: sagaActions.FETCH_POSTS });
   }, []);
 
   return (
@@ -62,34 +64,25 @@ const List: React.FC = () => {
           </Link>
         </FlexDiv>
         <GridDiv>
-          {posts && posts.length
-            ? posts.map((data: Post) => (
-                <PostCard key={data.id}>
-                  <FlexDiv>
-                    <Title>{data.user}</Title>
-                    <Date>{data.date}</Date>
-                    <Link to={`/posts/${data.id}`}>
-                      <More>더보기</More>
-                    </Link>
-                  </FlexDiv>
-                  <PostTitle>{data.title}</PostTitle>
-                  <PostBody>{data.body}</PostBody>
-                </PostCard>
-              ))
-            : data &&
-              data.map((data: Post) => (
-                <PostCard key={data.id}>
-                  <FlexDiv>
-                    <Title>{data.user}</Title>
-                    <Date>{data.date}</Date>
-                    <Link to={`/posts/${data.id}`}>
-                      <More>더보기</More>
-                    </Link>
-                  </FlexDiv>
-                  <PostTitle>{data.title}</PostTitle>
-                  <PostBody>{data.body}</PostBody>
-                </PostCard>
-              ))}
+          {posts && posts.length ? (
+            posts.map((data: Post) => (
+              <PostCard key={data.id}>
+                <FlexDiv>
+                  <Title>{data.user}</Title>
+                  <Date>{data.date}</Date>
+                  <Link to={`/posts/${data.id}`}>
+                    <More>더보기</More>
+                  </Link>
+                </FlexDiv>
+                <PostTitle>{data.title}</PostTitle>
+                <PostBody>{data.body}</PostBody>
+              </PostCard>
+            ))
+          ) : (
+            <BlankCard>
+              <CenterText>등록된 후기가 없습니다.</CenterText>
+            </BlankCard>
+          )}
         </GridDiv>
       </PaddingContainer>
     </Container>

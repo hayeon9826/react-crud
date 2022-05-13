@@ -18,10 +18,11 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setFormSlice } from '../../reducers/form';
-import { updatePost, editPost } from '../../reducers/post';
+import { setFormSlice } from '../../slices/form';
+import { updatePost, editPost } from '../../slices/post';
 import { RootState, AppDispatch } from '../../../src/store';
 import { BASE_URL } from '../../../src/lib/api';
+import { toast } from 'react-toastify';
 
 const PostEdit: React.FC = () => {
   const [post, setPost] = useState({
@@ -49,37 +50,50 @@ const PostEdit: React.FC = () => {
     };
 
   const handleSubmit = async () => {
-    form.id !== 0 &&
-      (await dispatch(
-        editPost({
-          id: post.id,
-          user: form.user,
-          title: form.title,
-          body: form.body,
-          date: dayjs().format('YYYY-MM-DD')
-        })
-      ),
-      await dispatch(
-        updatePost({
-          id: post.id,
-          post: {
+    try {
+      form.id !== 0 &&
+        (await dispatch(
+          editPost({
+            id: post.id,
             user: form.user,
             title: form.title,
             body: form.body,
             date: dayjs().format('YYYY-MM-DD')
-          }
+          })
+        ),
+        await dispatch(
+          updatePost({
+            id: post.id,
+            post: {
+              user: form.user,
+              title: form.title,
+              body: form.body,
+              date: dayjs().format('YYYY-MM-DD')
+            }
+          })
+        ));
+      // 후기 수정 후 form 리셋
+      await dispatch(
+        setFormSlice({
+          id: 0,
+          user: '',
+          title: '',
+          body: '',
+          date: ''
         })
-      ));
-    await dispatch(
-      setFormSlice({
-        id: 0,
-        user: '',
-        title: '',
-        body: '',
-        date: ''
-      })
-    );
-    navigate(`/posts/${post.id}`, { replace: true });
+      );
+      await toast.success('후기를 수정했습니다.', {
+        position: 'top-right',
+        autoClose: 1000
+      });
+      navigate(`/posts/${post.id}`, { replace: true });
+    } catch (e) {
+      await toast.error('문제가 발생했습니다. 다시 시도해주세요.', {
+        position: 'top-right',
+        autoClose: 1000
+      });
+      navigate('/', { replace: true });
+    }
   };
 
   useEffect(() => {

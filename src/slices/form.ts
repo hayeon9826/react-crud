@@ -13,7 +13,7 @@ export const form = createSlice({
   name: 'form',
   initialState,
   reducers: {
-    // form 리셋
+    // form 값 변경 및 리셋
     setFormSlice: (state, action) => {
       state = action.payload;
       return state;

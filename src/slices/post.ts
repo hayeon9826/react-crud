@@ -28,13 +28,11 @@ const initialState: Array<Post> = [
 
 // 액션 타입
 const ADD_POST = 'post/ADD_POST';
-const GET_POSTS = 'post/GET_POSTS';
 const UPDATE_POST = 'post/UPDATE_POST';
 const DELETE_POST = 'post/DELETE_POST';
 
 // createSlice로 합치는 작업 필요, type 재정의
 export const createPost = createAction(ADD_POST, API.createPost);
-export const listPosts = createAction(GET_POSTS, API.getPosts);
 export const updatePost = createAction(UPDATE_POST, API.updatePost); // { id, post: {title,body,user,date} }
 export const deletePost = createAction(DELETE_POST, API.deletePost); // id
 
@@ -46,10 +44,6 @@ export const posts = createSlice({
       state.push({ id: state.length + 1, ...action.payload });
       return state;
     },
-    getPosts: (state, action) => {
-      state = action.payload;
-      return state;
-    },
     editPost: (state, action) => {
       state = state.map((post) => (post.id == action.payload.id ? action.payload : post));
       return state;
@@ -57,9 +51,17 @@ export const posts = createSlice({
     removePost: (state, action) => {
       state = state.filter((post) => post.id !== action.payload);
       return state;
+    },
+    setPosts: (state, action) => {
+      state = action.payload;
+      return state;
+    },
+    getPostFail: (state, action) => {
+      console.log(action.payload);
+      return state;
     }
   }
 });
 
-export const { addPost, getPosts, editPost, removePost } = posts.actions;
+export const { addPost, editPost, removePost, getPostFail, setPosts } = posts.actions;
 export default posts.reducer;

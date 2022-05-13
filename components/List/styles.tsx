@@ -59,6 +59,12 @@ export const PostTitle = styled.div`
   margin-top: 10px;
 `;
 
+export const CenterText = styled.div`
+  color: #767676;
+  text-align: center;
+  font-size: 14px;
+`;
+
 export const PostBody = styled.div`
   margin-top: 18px;
   line-height: 1.6;
@@ -92,6 +98,24 @@ export const PostCard = styled.div`
   align-items: flex-start;
   flex-direction: column;
   display: flex;
+`;
+
+export const BlankCard = styled.div`
+  box-shadow: 0 16px 28px hsl(0deg 0% 92% / 80%);
+  margin: 0 auto !important;
+  width: 100% !important;
+  @media only screen and (max-width: 800px) {
+    width: 100% !important;
+  }
+  cursor: pointer;
+  background: white;
+  border-radius: 0.5rem;
+  --bg-opacity: 1;
+  position: relative;
+  display: block;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  padding: 1.5rem;
 `;
 
 export const More = styled.div`
