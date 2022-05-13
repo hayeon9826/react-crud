@@ -53,15 +53,6 @@ const PostEdit: React.FC = () => {
     try {
       form.id !== 0 &&
         (await dispatch(
-          editPost({
-            id: post.id,
-            user: form.user,
-            title: form.title,
-            body: form.body,
-            date: dayjs().format('YYYY-MM-DD')
-          })
-        ),
-        await dispatch(
           updatePost({
             id: post.id,
             post: {

@@ -26,9 +26,4 @@ export const updatePost = ({ id, post: { title, body, user, date } }: updatePost
 
 export const deletePost = (id: number) => axios.delete(`${BASE_URL}/post/${id}`); // 포스트를 제거한다
 
-export const getData = async () => {
-  const response = await axios.get(`${BASE_URL}/post/?_sort=id&_order=DESC&_limit=100`);
-  return response.data;
-};
-
 export const { useGetPostsQuery } = getPostApi;

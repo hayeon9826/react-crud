@@ -1,5 +1,4 @@
 import { createSlice, createAction } from '@reduxjs/toolkit';
-import * as API from '../lib/api';
 import { Post } from '../../interface';
 
 const initialState: Array<Post> = [
@@ -27,15 +26,24 @@ const initialState: Array<Post> = [
 ];
 
 // 액션 타입
-const ADD_POST = 'post/ADD_POST';
-const UPDATE_POST = 'post/UPDATE_POST';
-const DELETE_POST = 'post/DELETE_POST';
+const CREATE_POST = 'CREATE_POST';
+const UPDATE_POST = 'UPDATE_POST';
+const DELETE_POST = 'DELETE_POST';
 
-// createSlice로 합치는 작업 필요, type 재정의
-export const createPost = createAction(ADD_POST, API.createPost);
-export const updatePost = createAction(UPDATE_POST, API.updatePost); // { id, post: {title,body,user,date} }
-export const deletePost = createAction(DELETE_POST, API.deletePost); // id
+// createAction
+export const createPost = createAction(CREATE_POST, (data) => ({
+  payload: data
+}));
 
+export const updatePost = createAction(UPDATE_POST, (data) => ({
+  payload: data
+}));
+
+export const deletePost = createAction(DELETE_POST, (data) => ({
+  payload: data
+}));
+
+// createSlice
 export const posts = createSlice({
   name: 'post',
   initialState,

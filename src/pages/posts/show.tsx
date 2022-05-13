@@ -16,7 +16,7 @@ import { useParams } from 'react-router';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { BASE_URL } from '../../../src/lib/api';
-import { deletePost, removePost } from '../../slices/post';
+import { deletePost } from '../../slices/post';
 import { toast } from 'react-toastify';
 
 const PostShow: React.FC = () => {
@@ -35,7 +35,7 @@ const PostShow: React.FC = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      // redux 사용해서 가져오기로 변경 필요
+      // rtk query 사용해서 가져오기로 변경 필요
       const res = await axios({
         method: 'get',
         url: `${BASE_URL}/post/${params.id}`,
@@ -44,7 +44,6 @@ const PostShow: React.FC = () => {
           'Access-Control-Allow-Origin': '*'
         }
       });
-      // const res = await listPosts();
       await setPost(res.data);
     };
     if (params.id) {
@@ -57,7 +56,7 @@ const PostShow: React.FC = () => {
 
   const handleDelete = async () => {
     try {
-      post.id !== 0 && (await dispatch(removePost(post.id)), await dispatch(deletePost(post.id)));
+      post.id !== 0 && (await dispatch(deletePost(post.id)));
       await toast.success('후기를 삭제하였습니다.', {
         position: 'top-right',
         autoClose: 1000

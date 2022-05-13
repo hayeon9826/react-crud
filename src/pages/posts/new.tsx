@@ -16,7 +16,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setFormSlice } from '../../slices/form';
-import { addPost, createPost } from '../../slices/post';
+import { createPost } from '../../slices/post';
 import dayjs from 'dayjs';
 import { RootState, AppDispatch } from '../../../src/store';
 import { toast } from 'react-toastify';
@@ -43,14 +43,6 @@ const PostNew: React.FC = () => {
     try {
       form.id === 0 &&
         (await dispatch(
-          addPost({
-            user: form.user,
-            title: form.title,
-            body: form.body,
-            date: dayjs().format('YYYY-MM-DD')
-          })
-        ),
-        await dispatch(
           createPost({
             user: form.user,
             title: form.title,
