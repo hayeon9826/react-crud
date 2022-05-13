@@ -18,6 +18,7 @@ import { useDispatch } from 'react-redux';
 import { BASE_URL } from '../../../src/lib/api';
 import { deletePost } from '../../slices/post';
 import { toast } from 'react-toastify';
+import { AppDispatch } from 'src/store';
 
 const PostShow: React.FC = () => {
   const [post, setPost] = useState({
@@ -51,7 +52,7 @@ const PostShow: React.FC = () => {
     }
   }, [params]);
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleDelete = async () => {

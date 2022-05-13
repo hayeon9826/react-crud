@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Post, updatePostProps } from '../../interface';
+import { Post, updatePostProps } from '../interface';
 
 // rtk query로 변경 필요. getPosts, getData는 Query로 변경 / createPost, updatePost는 mutation 적용
 export const BASE_URL = 'http://localhost:3000';

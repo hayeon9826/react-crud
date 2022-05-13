@@ -3,7 +3,7 @@ import * as API from '../lib/api';
 import { sagaActions } from './sagaAction';
 import { AxiosResponse } from 'axios';
 import { addPost, setPosts, editPost, removePost } from '../../src/slices/post';
-import { updatePostProps, Post } from 'interface';
+import { updatePostProps, Post } from 'src/interface';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export function* getPostsSaga() {

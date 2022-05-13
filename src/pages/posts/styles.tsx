@@ -142,7 +142,7 @@ export const PostCard = styled.div`
   --bg-opacity: 1;
   position: relative;
   display: block;
-  \outline: 2px solid transparent;
+  outline: 2px solid transparent;
   outline-offset: 2px;
   padding: 1.5rem;
   align-items: flex-start;

@@ -1,5 +1,5 @@
 import { createSlice, createAction } from '@reduxjs/toolkit';
-import { Post } from '../../interface';
+import { Post } from '../interface';
 
 const initialState: Array<Post> = [
   {

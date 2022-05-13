@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Form } from '../../interface';
+import { Form } from '../interface';
 
 const initialState: Form = {
   id: 0,

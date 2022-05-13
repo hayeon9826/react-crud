@@ -5,8 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
-const container = document.getElementById('app');
-const root = createRoot(container!);
+const container = document.getElementById('app') as HTMLElement;
+const root = createRoot(container);
 
 root.render(
   <React.StrictMode>

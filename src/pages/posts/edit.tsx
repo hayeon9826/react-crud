@@ -19,7 +19,7 @@ import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setFormSlice } from '../../slices/form';
-import { updatePost, editPost } from '../../slices/post';
+import { updatePost } from '../../slices/post';
 import { RootState, AppDispatch } from '../../../src/store';
 import { BASE_URL } from '../../../src/lib/api';
 import { toast } from 'react-toastify';
