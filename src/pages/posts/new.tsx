@@ -61,13 +61,11 @@ const PostNew: React.FC = () => {
         })
       );
       await toast.success('후기를 작성했습니다.', {
-        position: 'top-right',
         autoClose: 1000
       });
       navigate('/', { replace: true });
     } catch (e) {
       await toast.error('문제가 발생했습니다. 다시 시도해주세요.', {
-        position: 'top-right',
         autoClose: 1000
       });
       navigate('/', { replace: true });

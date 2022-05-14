@@ -12,6 +12,9 @@ export const getPostApi = createApi({
   endpoints: (builder) => ({
     getPosts: builder.query<Post, string>({
       query: (query) => (query ? `post/${query}` : `post/?_sort=id&_order=DESC&_limit=100`)
+    }),
+    getPost: builder.query<Post, number>({
+      query: (id) => `post/${id}`
     })
   })
 });
@@ -26,4 +29,4 @@ export const updatePost = ({ id, post: { title, body, user, date } }: updatePost
 
 export const deletePost = (id: number) => axios.delete(`${BASE_URL}/post/${id}`); // 포스트를 제거한다
 
-export const { useGetPostsQuery } = getPostApi;
+export const { useGetPostsQuery, useGetPostQuery } = getPostApi;

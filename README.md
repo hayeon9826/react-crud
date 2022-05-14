@@ -2,7 +2,7 @@
 
 - react 게시판 프로젝트 (1단계 게시판 만들기)
 - 배포 링크: https://react-crud-finda.vercel.app/
-- 참고: https://findainc.atlassian.net/wiki/spaces/FF/pages/2121170954/OnBoarding
+- 온보딩 참고: https://findainc.atlassian.net/wiki/spaces/FF/pages/2121170954/OnBoarding
 
 ## 사용 스택
 
