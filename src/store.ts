@@ -25,7 +25,7 @@ sagaMiddleware.run(rootSaga);
 // setupListeners 문서를 참고 - 커스텀을 위한 옵셔널 콜백을 2번째 인자로 받음
 setupListeners(store.dispatch);
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
+// rootState 타입 정의
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+// AppDispatch 타입 정의
 export type AppDispatch = typeof store.dispatch;

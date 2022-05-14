@@ -35,7 +35,7 @@ npx json-server --watch db.json
 아래 명령어 입력 시, build 폴더에 빌드된 파일 (bundle.js) 생성됨
 
 ```
-yarn webpack
+yarn build
 ```
 
 ## 구현된 기능
@@ -67,19 +67,19 @@ yarn webpack
          <th>설명</th>
       </tr>
       <tr>
-         <td>`src/store.ts`</td>
+         <td>src/store.ts</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
       <tr>
-         <td>`src/App.tsx`</td>
+         <td>src/App.tsx</td>
          <td> </td>
       </tr>
       <tr>
-         <td>`src/index.tsx`</td>
+         <td>src/index.tsx</td>
          <td> </td>
       </tr>
       <tr>
-         <td>`src/index.html`</td>
+         <td>src/index.html</td>
          <td> </td>
       </tr>
    </tbody>
@@ -94,19 +94,19 @@ yarn webpack
          <th>설명</th>
       </tr>
       <tr>
-         <td>`components/Button/index.tsx`</td>
+         <td>components/Button/index.tsx</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
       <tr>
-         <td>`components/List/index.tsx`</td>
+         <td>components/List/index.tsx</td>
          <td> </td>
       </tr>
       <tr>
-         <td>`components/Navbar/index.tsx`</td>
+         <td>components/Navbar/index.tsx</td>
          <td> </td>
       </tr>
       <tr>
-        <td>`components/.../styles.tsx`</td>
+        <td>components/.../styles.tsx</td>
          <td> </td>
       </tr>
    </tbody>
@@ -121,7 +121,7 @@ yarn webpack
          <th>설명</th>
       </tr>
       <tr>
-         <td>`interface/index.tsx`</td>
+         <td>interface/index.tsx</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
    </tbody>
@@ -136,7 +136,7 @@ yarn webpack
          <th>설명</th>
       </tr>
       <tr>
-         <td>`lib/api.ts`</td>
+         <td>lib/api.ts</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
    </tbody>
@@ -151,11 +151,11 @@ yarn webpack
          <th>설명</th>
       </tr>
       <tr>
-         <td>`pages/show.tsx`, `pages/new.tsx`, `pages/edit.tsx`</td>
+         <td>pages/show.tsx, pages/new.tsx, pages/edit.tsx</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
       <tr>
-         <td>`pages/styles.tsx`</td>
+         <td>pages/styles.tsx</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
    </tbody>
@@ -170,11 +170,11 @@ yarn webpack
          <th>설명</th>
       </tr>
       <tr>
-         <td>`sagas/saga.ts`</td>
+         <td>sagas/saga.ts</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
       <tr>
-         <td>`sagas/sagaAction.ts`</td>
+         <td>sagas/sagaAction.ts</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
    </tbody>
@@ -189,11 +189,11 @@ yarn webpack
          <th>설명</th>
       </tr>
       <tr>
-         <td>`slices/form.ts`</td>
+         <td>slices/form.ts</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
       <tr>
-         <td>`slices/post.ts`</td>
+         <td>slices/post.ts</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
    </tbody>
@@ -208,7 +208,7 @@ yarn webpack
          <th>설명</th>
       </tr>
       <tr>
-         <td>`styles/global.ts`</td>
+         <td>styles/global.ts</td>
          <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
       </tr>
    </tbody>

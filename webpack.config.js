@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// eslint-disable-next-line no-undef
 module.exports = {
   entry: './src/index.tsx',
-  mode: process.env.NODE_ENV || 'development',
+  mode: 'development',
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
   },
@@ -33,14 +34,15 @@ module.exports = {
     ]
   },
   output: {
+    // eslint-disable-next-line no-undef
     path: path.resolve(__dirname, './build'),
     filename: 'bundle.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
+      // eslint-disable-next-line no-undef
       template: path.resolve(__dirname, 'src', 'index.html')
     })
   ],
-  mode: 'development',
   stats: 'errors-only'
 };

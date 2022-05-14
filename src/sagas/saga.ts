@@ -6,6 +6,7 @@ import { addPost, setPosts, editPost, removePost } from '../../src/slices/post';
 import { updatePostProps, Post } from 'src/interface';
 import { PayloadAction } from '@reduxjs/toolkit';
 
+// post 데이터 가져오기
 export function* getPostsSaga() {
   try {
     const result: AxiosResponse = yield call(API.getPosts);
@@ -15,15 +16,7 @@ export function* getPostsSaga() {
   }
 }
 
-export function* getPostSaga() {
-  try {
-    const result: AxiosResponse = yield call(API.getPosts);
-    yield put(setPosts(result.data));
-  } catch (e) {
-    yield console.log(e);
-  }
-}
-
+//  post 데이터 생성하기
 export function* createPostSaga({ payload }: PayloadAction<Post>) {
   try {
     const response: AxiosResponse = yield call(API.createPost, payload);
@@ -35,6 +28,7 @@ export function* createPostSaga({ payload }: PayloadAction<Post>) {
   }
 }
 
+// post 데이터 수정하기
 export function* updatePostSaga({ payload }: PayloadAction<updatePostProps>) {
   try {
     const response: AxiosResponse = yield call(API.updatePost, payload);
@@ -46,6 +40,7 @@ export function* updatePostSaga({ payload }: PayloadAction<updatePostProps>) {
   }
 }
 
+// post 데이터 삭제하기
 export function* removeDataSaga({ payload: id }: PayloadAction<number>) {
   try {
     const response: AxiosResponse = yield call(API.deletePost, id);

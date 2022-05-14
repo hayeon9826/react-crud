@@ -16,14 +16,6 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "preserve"
-    // "paths": {
-    //   "@components/*": ["components/*"],
-    //   "@src/*": ["src/*"],
-    //   "@interface": ["interface/index"],
-    //   "@styles/*": ["src/styles/*"],
-    //   "@pages/*": ["src/pages/*"],
-    //   "@modules/*": ["src/modules/*"]
-    // }
   },
   "include": ["**/*.ts", "**/*.tsx", "./src"],
   "exclude": ["node_modules"]

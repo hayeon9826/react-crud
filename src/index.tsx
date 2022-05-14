@@ -10,7 +10,9 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
+    {/* store 정의 */}
     <Provider store={store}>
+      {/* router 정의 */}
       <BrowserRouter>
         <App />
       </BrowserRouter>

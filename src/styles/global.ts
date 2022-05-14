@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
+// 전체 style 적용
 export default createGlobalStyle`
    *{
        margin: 0;

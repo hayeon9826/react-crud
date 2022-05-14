@@ -2,10 +2,10 @@ import axios from 'axios';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Post, updatePostProps } from '../interface';
 
-// rtk query로 변경 필요. getPosts, getData는 Query로 변경 / createPost, updatePost는 mutation 적용
+// json-server 호스트로 이동
 export const BASE_URL = 'http://localhost:3000';
 
-// Define a service using a base URL and expected endpoints
+// rtk query 정의 (fetch)
 export const getPostApi = createApi({
   reducerPath: 'getPostApi',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
@@ -13,14 +13,15 @@ export const getPostApi = createApi({
     getPosts: builder.query<Post, string>({
       query: (query) => (query ? `post/${query}` : `post/?_sort=id&_order=DESC&_limit=100`)
     }),
-    getPost: builder.query<Post, number>({
+    getPost: builder.query<Post, string>({
       query: (id) => `post/${id}`
     })
   })
 });
 
+// 기본 CRUD axios 정의
 export const createPost = ({ title, body, user, date }: Post) =>
-  axios.post(`${BASE_URL}/post`, { title, body, user, date });
+  axios.post(`${BASE_URL}/post`, { title, body, user, date }); // 포스트를 생성한다
 
 export const getPosts = () => axios.get(`${BASE_URL}/post/?_sort=id&_order=DESC&_limit=100`); // 역순으로 최근 작성된 포스트 20개를 불러온다.
 

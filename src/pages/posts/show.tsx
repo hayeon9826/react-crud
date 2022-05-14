@@ -21,22 +21,22 @@ import { AppDispatch } from 'src/store';
 
 const PostShow: React.FC = () => {
   const params = useParams();
+  const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     data: post,
     isFetching,
     isLoading
-  } = useGetPostQuery(parseInt(params.id!), {
+  } = useGetPostQuery(params?.id || '', {
     refetchOnMountOrArgChange: true,
-    skip: !params.id
+    skip: !params?.id
   });
 
   useEffect(() => {
+    // scroll to top
     window.scrollTo(0, 0);
   }, []);
-
-  const dispatch: AppDispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleDelete = async () => {
     try {

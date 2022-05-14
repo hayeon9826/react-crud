@@ -63,13 +63,9 @@ export const posts = createSlice({
     setPosts: (state, action) => {
       state = action.payload;
       return state;
-    },
-    getPostFail: (state, action) => {
-      console.log(action.payload);
-      return state;
     }
   }
 });
 
-export const { addPost, editPost, removePost, getPostFail, setPosts } = posts.actions;
+export const { addPost, editPost, removePost, setPosts } = posts.actions;
 export default posts.reducer;

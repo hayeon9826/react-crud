@@ -23,14 +23,7 @@ import { toast } from 'react-toastify';
 
 const PostNew: React.FC = () => {
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    if (inputRef && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
   const navigate = useNavigate();
-
   const form = useSelector((state: RootState) => state.form);
   const dispatch: AppDispatch = useDispatch();
   const handleChange =
@@ -41,29 +34,37 @@ const PostNew: React.FC = () => {
 
   const handleSubmit = async () => {
     try {
-      form.id === 0 &&
-        (await dispatch(
-          createPost({
-            user: form.user,
-            title: form.title,
-            body: form.body,
-            date: dayjs().format('YYYY-MM-DD')
+      // form validation
+      if (form.user && form.title && form.body) {
+        form.id === 0 &&
+          (await dispatch(
+            createPost({
+              user: form.user,
+              title: form.title,
+              body: form.body,
+              date: dayjs().format('YYYY-MM-DD')
+            })
+          ));
+        // 후기 생성 후 form 리셋
+        await dispatch(
+          setFormSlice({
+            id: 0,
+            user: '',
+            title: '',
+            body: '',
+            date: ''
           })
-        ));
-      // 후기 생성 후 form 리셋
-      await dispatch(
-        setFormSlice({
-          id: 0,
-          user: '',
-          title: '',
-          body: '',
-          date: ''
-        })
-      );
-      await toast.success('후기를 작성했습니다.', {
-        autoClose: 1000
-      });
-      navigate('/', { replace: true });
+        );
+        await toast.success('후기를 작성했습니다.', {
+          autoClose: 1000
+        });
+        navigate('/', { replace: true });
+      } else {
+        // form validation
+        await toast.warning('모든 필드를 채워주세요.', {
+          autoClose: 1000
+        });
+      }
     } catch (e) {
       await toast.error('문제가 발생했습니다. 다시 시도해주세요.', {
         autoClose: 1000
@@ -71,6 +72,14 @@ const PostNew: React.FC = () => {
       navigate('/', { replace: true });
     }
   };
+
+  useEffect(() => {
+    // scroll to top
+    window.scrollTo(0, 0);
+    if (inputRef && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   return (
     <div>

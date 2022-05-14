@@ -12,15 +12,13 @@ import 'react-toastify/dist/ReactToastify.css';
 const App: React.FC = () => {
   return (
     <>
+      {/* 전체 style 적용 */}
       <GlobalStyle />
+      {/* 기본 navbar 컴포넌트 상시 띄우기 */}
       <Navbar />
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      {/* react-toastify 적용 */}
+      <ToastContainer position="top-right" autoClose={1000} />
+      {/* routes 정의 */}
       <div className="route">
         <Routes>
           <Route path="/" element={<List />} />

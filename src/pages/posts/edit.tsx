@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   Container,
   PaddingContainer,
@@ -14,32 +14,18 @@ import {
   SubmitButton
 } from './styles';
 import { useParams } from 'react-router';
-import axios from 'axios';
 import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setFormSlice } from '../../slices/form';
 import { updatePost } from '../../slices/post';
 import { RootState, AppDispatch } from '../../../src/store';
-import { BASE_URL } from '../../../src/lib/api';
+import { useGetPostQuery } from '../../../src/lib/api';
 import { toast } from 'react-toastify';
 
 const PostEdit: React.FC = () => {
-  const [post, setPost] = useState({
-    id: 0,
-    user: '',
-    title: '',
-    body: '',
-    date: ''
-  });
   const params = useParams();
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    if (inputRef && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
   const navigate = useNavigate();
   const form = useSelector((state: RootState) => state.form);
   const dispatch: AppDispatch = useDispatch();
@@ -51,32 +37,40 @@ const PostEdit: React.FC = () => {
 
   const handleSubmit = async () => {
     try {
-      form.id !== 0 &&
-        (await dispatch(
-          updatePost({
-            id: post.id,
-            post: {
-              user: form.user,
-              title: form.title,
-              body: form.body,
-              date: dayjs().format('YYYY-MM-DD')
-            }
+      // form validation
+      if (form.user && form.title && form.body) {
+        form.id !== 0 &&
+          (await dispatch(
+            updatePost({
+              id: post?.id,
+              post: {
+                user: form.user,
+                title: form.title,
+                body: form.body,
+                date: dayjs().format('YYYY-MM-DD')
+              }
+            })
+          ));
+        // 후기 수정 후 form 리셋
+        await dispatch(
+          setFormSlice({
+            id: 0,
+            user: '',
+            title: '',
+            body: '',
+            date: ''
           })
-        ));
-      // 후기 수정 후 form 리셋
-      await dispatch(
-        setFormSlice({
-          id: 0,
-          user: '',
-          title: '',
-          body: '',
-          date: ''
-        })
-      );
-      await toast.success('후기를 수정했습니다.', {
-        autoClose: 1000
-      });
-      navigate(`/posts/${post.id}`, { replace: true });
+        );
+        await toast.success('후기를 수정했습니다.', {
+          autoClose: 1000
+        });
+        navigate(`/posts/${post?.id}`, { replace: true });
+      } else {
+        // form validation
+        await toast.warning('모든 필드를 채워주세요.', {
+          autoClose: 1000
+        });
+      }
     } catch (e) {
       await toast.error('문제가 발생했습니다. 다시 시도해주세요.', {
         autoClose: 1000
@@ -85,27 +79,19 @@ const PostEdit: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    const fetch = async () => {
-      // redux 사용해서 가져오기로 변경 필요
-      const res = await axios({
-        method: 'get',
-        url: `${BASE_URL}/post/${params.id}`,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          'Access-Control-Allow-Origin': '*'
-        }
-      });
-      await setPost(res.data);
-    };
-    if (params.id) {
-      fetch();
-    }
-  }, [params]);
+  const { data: post } = useGetPostQuery(params?.id || '', {
+    refetchOnMountOrArgChange: true,
+    skip: !params?.id
+  });
 
   useEffect(() => {
-    if (post.id) {
+    if (post?.id) {
       dispatch(setFormSlice({ ...post }));
+    }
+    // scroll to top
+    window.scrollTo(0, 0);
+    if (inputRef && inputRef.current) {
+      inputRef.current.focus();
     }
   }, [post]);
 
