@@ -314,12 +314,15 @@ yarn build
 
 - redux 사이클 이해 필요
 - redux-saga 이해 필요
-- rtk-query 적용 필요
+- rtk-query mutation 적용 필요
 
 ### 궁금한 점
 
 - api로 데이터를 저장해도 redux store를 통해 데이터를 가져오는 것이 좋을지? 아니면 바로 rtk-query로 백엔드에서 데이터 가져오는게 더 나을지?
 - createSlice와 createAction를 하나로 합쳐서 적용이 가능한지?
+- axios를 완전히 사용하지 않고, rtk-query로 대체하는게 나을지?
+- saga에는 side Effect를 담당하는 액션들을 활용하라고 했는데 단순 fetching만 적용하는게 나을지? (현재는 수정/삭제/생성 모두 적용)
+- saga.ts에 rtk-query 적용 가능한지? (함수 안에 적용 하려고 하면 invalid hook call 에러 남)
 
 ## 참고 문서
 
