@@ -22,6 +22,7 @@ import { updatePost } from '../../slices/post';
 import { RootState, AppDispatch } from '../../../src/store';
 import { useGetPostQuery } from '../../../src/lib/api';
 import { toast } from 'react-toastify';
+import { sagaActions } from '../../../src/sagas/sagaAction';
 
 const PostEdit: React.FC = () => {
   const params = useParams();
@@ -52,18 +53,7 @@ const PostEdit: React.FC = () => {
             })
           ));
         // 후기 수정 후 form 리셋
-        await dispatch(
-          setFormSlice({
-            id: 0,
-            user: '',
-            title: '',
-            body: '',
-            date: ''
-          })
-        );
-        await toast.success('후기를 수정했습니다.', {
-          autoClose: 1000
-        });
+        await dispatch({ type: sagaActions.RESET_FORM });
         navigate(`/posts/${post?.id}`, { replace: true });
       } else {
         // form validation
@@ -72,9 +62,7 @@ const PostEdit: React.FC = () => {
         });
       }
     } catch (e) {
-      await toast.error('문제가 발생했습니다. 다시 시도해주세요.', {
-        autoClose: 1000
-      });
+      console.log(e);
       navigate('/', { replace: true });
     }
   };
@@ -130,7 +118,7 @@ const PostEdit: React.FC = () => {
                 />
               </FormGroup>
               <SubmitBox>
-                <SubmitButton onClick={() => handleSubmit()}>제출하기</SubmitButton>
+                <SubmitButton onClick={() => handleSubmit()}>수정하기</SubmitButton>
               </SubmitBox>
             </FormBox>
           </FormDiv>

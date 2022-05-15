@@ -9,14 +9,14 @@ import {
   Date,
   PostTitle,
   PostBody,
-  More
+  More,
+  SmallText
 } from './styles';
 import { Link, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { useGetPostQuery } from '../../../src/lib/api';
 import { deletePost } from '../../slices/post';
-import { toast } from 'react-toastify';
 import { AppDispatch } from 'src/store';
 
 const PostShow: React.FC = () => {
@@ -40,15 +40,10 @@ const PostShow: React.FC = () => {
 
   const handleDelete = async () => {
     try {
+      // sagas.ts의 removeDataSaga 호출
       post && post.id !== 0 && (await dispatch(deletePost(post.id)));
-      await toast.success('후기를 삭제하였습니다.', {
-        autoClose: 1000
-      });
       navigate('/', { replace: true });
     } catch (e) {
-      await toast.error('문제가 발생했습니다. 다시 시도해주세요.', {
-        autoClose: 1000
-      });
       navigate('/', { replace: true });
     }
   };
@@ -61,7 +56,7 @@ const PostShow: React.FC = () => {
           </FlexDiv>
           <PostDiv>
             {isFetching || isLoading ? (
-              <PostCard>잠시만 기다려 주세요...</PostCard>
+              <small>잠시만 기다려 주세요...</small>
             ) : (
               <PostCard>
                 {post ? (
@@ -78,10 +73,11 @@ const PostShow: React.FC = () => {
                     </FlexDiv>
                     <PostTitle>{post?.title}</PostTitle>
                     <PostBody>{post?.body}</PostBody>
+                    <></>
                   </>
                 ) : (
                   <>
-                    <h2>후기가 없습니다. 다시 시도해주세요.</h2>
+                    <SmallText>후기가 없습니다. 다시 시도해주세요.</SmallText>
                   </>
                 )}
               </PostCard>

@@ -20,12 +20,14 @@ import { createPost } from '../../slices/post';
 import dayjs from 'dayjs';
 import { RootState, AppDispatch } from '../../../src/store';
 import { toast } from 'react-toastify';
+import { sagaActions } from '../../../src/sagas/sagaAction';
 
 const PostNew: React.FC = () => {
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const navigate = useNavigate();
   const form = useSelector((state: RootState) => state.form);
   const dispatch: AppDispatch = useDispatch();
+
   const handleChange =
     (prop: string) =>
     (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -46,18 +48,7 @@ const PostNew: React.FC = () => {
             })
           ));
         // 후기 생성 후 form 리셋
-        await dispatch(
-          setFormSlice({
-            id: 0,
-            user: '',
-            title: '',
-            body: '',
-            date: ''
-          })
-        );
-        await toast.success('후기를 작성했습니다.', {
-          autoClose: 1000
-        });
+        await dispatch({ type: sagaActions.RESET_FORM });
         navigate('/', { replace: true });
       } else {
         // form validation
@@ -66,9 +57,7 @@ const PostNew: React.FC = () => {
         });
       }
     } catch (e) {
-      await toast.error('문제가 발생했습니다. 다시 시도해주세요.', {
-        autoClose: 1000
-      });
+      console.log(e);
       navigate('/', { replace: true });
     }
   };
@@ -107,7 +96,7 @@ const PostNew: React.FC = () => {
                 <TextArea placeholder="내용을 입력해 주세요" onChange={handleChange('body')} />
               </FormGroup>
               <SubmitBox>
-                <SubmitButton onClick={() => handleSubmit()}>제출하기</SubmitButton>
+                <SubmitButton onClick={() => handleSubmit()}>작성하기</SubmitButton>
               </SubmitBox>
             </FormBox>
           </FormDiv>

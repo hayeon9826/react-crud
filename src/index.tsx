@@ -9,7 +9,7 @@ const container = document.getElementById('app') as HTMLElement;
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
+  <React.Fragment>
     {/* store 정의 */}
     <Provider store={store}>
       {/* router 정의 */}
@@ -17,5 +17,5 @@ root.render(
         <App />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>
+  </React.Fragment>
 );

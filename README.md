@@ -50,11 +50,38 @@ yarn build
 
 ### 1) 게시글 생성
 
+- `posts/new.tsx` 페이지의 `handleSubmit` 확인
+- 폼에 값 입력시 마다 handleChange함수 호출. setFormSlice 리듀서를 호출해서 해당 값을 store (form)에 저장
+- '작성하기' 버튼 입력 시 폼의 모든 값이 저장되어 있는지 확인 후, post/createPost 액션을 호출함
+- saga.ts에서 createPostSaga를 통해 데이터를 생성하고, store(post)에도 해당 데이터 추가함
+- 성공시, FETCH_POSTS saga를 디스패치 하고 resetFormSaga 호출해서 폼 데이터 리셋함
+- 에러가 나면 toast를 띄워서 알려줌
+
 ### 2) 게시글 수정
+
+- `posts/edit.tsx` 페이지의 `handleSubmit` 확인
+- 폼에 값 입력시 마다 handleChange함수 호출. setFormSlice 리듀서를 호출해서 해당 값을 store (form)에 저장
+- '수정하기' 버튼 입력 시 폼의 모든 값이 저장되어 있는지 확인 후, post/updatePost 액션을 호출함
+- saga.ts에서 updatePostSaga 통해 데이터를 생성하고, store(post)에도 해당 데이터 수정함
+- 성공시, FETCH_POSTS saga를 디스패치 하고 resetFormSaga 호출해서 폼 데이터 리셋함
+- 에러가 나면 toast를 띄워서 알려줌
 
 ### 3) 게시글 삭제
 
+- `posts/show.tsx`의 `handleDelete` 함수 확인
+- '삭제' 버튼 클릭 시 handleDelete 함수 호출
+- slices/post에서 deletePost 액션을 호출함
+- saga.ts에서 removeDataSaga를 통해 데이터를 삭제하고, store(post)에서도 해당 데이터 제거
+- 에러가 나면 toast를 띄워서 알려줌
+
 ### 4) 게시글 가져오기
+
+- `list/index.tsx`, `posts/show.tsx` 페이지 확인
+- `list/index`의 경우, useEffect를 이용해 page mount시 FETCH_POSTS saga를 디스패치 한다.
+- saga.ts에서 getPostsSaga를 통해 모든 후기 데이터를 가져오고, store(post)에 모든 데이터 업데이트 함
+- useSelector를 이용해 store에서 posts 데이터를 가져와 화면에 보여줌
+- `posts/show`의 경우, url params로 현재 페이지의 id 값을 확인함. 그리고 rtk-query를 사용해서 데이터를 가져옴
+- lib/api.ts에 rtk-query 적용
 
 ## 파일별 설명
 
@@ -68,19 +95,19 @@ yarn build
       </tr>
       <tr>
          <td>src/store.ts</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> 리덕스 store 세팅</td>
       </tr>
       <tr>
          <td>src/App.tsx</td>
-         <td> </td>
+         <td>실제로 화면에 표시되는 컴포넌트 등 정의 </td>
       </tr>
       <tr>
          <td>src/index.tsx</td>
-         <td> </td>
+         <td>HTML 템플릿 및 JavaScript의 컴포넌트를 조합하여 렌더링하고 실제 표시 </td>
       </tr>
       <tr>
          <td>src/index.html</td>
-         <td> </td>
+         <td>   index.tsx에 대응되는 HTML 템플릿 파일. index.tsx에 의해 읽어 와서 렌더링된 결과가 표시됨</td>
       </tr>
    </tbody>
 </table>
@@ -95,19 +122,19 @@ yarn build
       </tr>
       <tr>
          <td>components/Button/index.tsx</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> 메인 페이지의 '후기 작성' 버튼 컴포넌트</td>
       </tr>
       <tr>
          <td>components/List/index.tsx</td>
-         <td> </td>
+         <td> 메인 페이지의 '후기 리스트' 컴포넌트. 페이지 마운트시 redux-saga로 데이터 fetching 후, 화면에 표시</td>
       </tr>
       <tr>
          <td>components/Navbar/index.tsx</td>
-         <td> </td>
+         <td> 상단 네비게이션 바. 모든 페이지에서 보일 수 있도록 App.tsx에 적용함 </td>
       </tr>
       <tr>
         <td>components/.../styles.tsx</td>
-         <td> </td>
+         <td> 위 컴포넌트들에 모두 적용되는 스타일 (styled-component 적용)</td>
       </tr>
    </tbody>
 </table>
@@ -122,7 +149,7 @@ yarn build
       </tr>
       <tr>
          <td>interface/index.tsx</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> 타입 체크를 위한 인터페이스 정의 (typescript)</td>
       </tr>
    </tbody>
 </table>
@@ -137,7 +164,7 @@ yarn build
       </tr>
       <tr>
          <td>lib/api.ts</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> 데이터 가져오기/수정/생성/삭제 api 정의. axios 및 rtk-query 적용</td>
       </tr>
    </tbody>
 </table>
@@ -152,11 +179,11 @@ yarn build
       </tr>
       <tr>
          <td>pages/show.tsx, pages/new.tsx, pages/edit.tsx</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> 후기 상세페이지, 후기 작성하기 페이지, 수정 페이지 정의</td>
       </tr>
       <tr>
          <td>pages/styles.tsx</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> 위 페이지에 공통적으로 적용되는 스타일 (styled-component 적용)</td>
       </tr>
    </tbody>
 </table>
@@ -171,11 +198,11 @@ yarn build
       </tr>
       <tr>
          <td>sagas/saga.ts</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> redux-saga 적용하는 파일</td>
       </tr>
       <tr>
          <td>sagas/sagaAction.ts</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> saga에서 적용되는 액션 정의</td>
       </tr>
    </tbody>
 </table>
@@ -190,11 +217,11 @@ yarn build
       </tr>
       <tr>
          <td>slices/form.ts</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> createSlice API로 폼 관련 액션, 리듀서 정의</td>
       </tr>
       <tr>
          <td>slices/post.ts</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> createSlice API로 후기 데이터 관련 액션, 리듀서 정의</td>
       </tr>
    </tbody>
 </table>
@@ -209,7 +236,7 @@ yarn build
       </tr>
       <tr>
          <td>styles/global.ts</td>
-         <td> 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.</td>
+         <td> 전체 페이지에 적용되는 공통 스타일 코드 (styled-component 적용)</td>
       </tr>
    </tbody>
 </table>
@@ -281,7 +308,18 @@ yarn build
   </tr> 
 </table>
 
-## 개선해야 할 점
+## 개선점 / 궁금한 점
+
+### 개선점
+
+- redux 사이클 이해 필요
+- redux-saga 이해 필요
+- rtk-query 적용 필요
+
+### 궁금한 점
+
+- api로 데이터를 저장해도 redux store를 통해 데이터를 가져오는 것이 좋을지? 아니면 바로 rtk-query로 백엔드에서 데이터 가져오는게 더 나을지?
+- createSlice와 createAction를 하나로 합쳐서 적용이 가능한지?
 
 ## 참고 문서
 
@@ -290,7 +328,6 @@ yarn build
 - [redux 공식 도큐](https://redux-toolkit.js.org/tutorials/quick-start)
 - [React-router-dom 설명](https://velog.io/@swanious/React-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%9D%BC%EC%9A%B0%ED%84%B0-%EC%A0%81%EC%9A%A9)
 - [Redux-saga 튜토리얼](https://mskims.github.io/redux-saga-in-korean/introduction/BeginnerTutorial.html)
-- [redux toolkit crud example](https://www.bezkoder.com/redux-toolkit-example-crud/)
 - [Json-server 이해하기](https://redux-advanced.vlpt.us/3/01.html)
 - [Redux-Saga 설명 영상 (FE Conference, Toss)](https://www.youtube.com/watch?v=UxpREAHZ7Ck)
 - [Redux toolkit 사내 도큐](https://findainc.atlassian.net/wiki/spaces/FF/pages/2689302595/Redux+Toolkit)

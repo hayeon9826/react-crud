@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Post, updatePostProps } from '../interface';
 
-// json-server 호스트로 이동
+// json-server 호스트 url
 export const BASE_URL = 'http://localhost:3000';
 
 // rtk query 정의 (fetch)

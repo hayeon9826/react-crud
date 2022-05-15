@@ -176,3 +176,9 @@ export const Date = styled.span`
     line-height: 16px;
   }
 `;
+
+export const SmallText = styled.div`
+  color: #767676;
+  font-size: 12px;
+  margin: 0 auto;
+`;

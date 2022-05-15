@@ -25,7 +25,7 @@ const List: React.FC = () => {
   const posts = useSelector((state: RootState) => state.posts);
 
   useEffect(() => {
-    // page mount시 post 데이터 fetching
+    // page mount시 post 데이터 fetching. reducer로 post 세팅
     dispatch({ type: sagaActions.FETCH_POSTS });
   }, []);
 
