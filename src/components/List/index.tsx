@@ -34,7 +34,7 @@ const List: React.FC = () => {
       <PaddingContainer>
         <FlexDiv>
           <Title>전체 후기</Title>
-          <Link to="/posts/new">
+          <Link to="/posts/new" id="postNewBtn">
             <Button buttonText={'후기 작성하기'} />
           </Link>
         </FlexDiv>
@@ -45,7 +45,7 @@ const List: React.FC = () => {
                 <FlexDiv>
                   <Title>{data.user}</Title>
                   <Date>{data.date}</Date>
-                  <Link to={`/posts/${data.id}`}>
+                  <Link to={`/posts/${data.id}`} className="postShowBtn">
                     <More>더보기</More>
                   </Link>
                 </FlexDiv>

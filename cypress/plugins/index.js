@@ -16,7 +16,7 @@ const wp = require('@cypress/webpack-preprocessor');
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-undef
-module.exports = (on) => {
+module.exports = (on, config) => {
   const options = {
     webpackOptions: {
       resolve: {
@@ -34,4 +34,10 @@ module.exports = (on) => {
     }
   };
   on('file:preprocessor', wp(options));
+  on('before:browser:launch', (browser, launchOptions) => {
+    if (browser.name === 'chrome' && browser.isHeadless) {
+      launchOptions.args.push('--disable-gpu');
+      return launchOptions;
+    }
+  });
 };

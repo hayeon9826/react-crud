@@ -84,16 +84,25 @@ const PostNew: React.FC = () => {
                 <Input
                   placeholder="사용자 이름을 입력해 주세요"
                   ref={inputRef}
+                  id="userInput"
                   onChange={handleChange('user')}
                 />
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="label">제목</Label>
-                <Input placeholder="제목을 입력해 주세요" onChange={handleChange('title')} />
+                <Input
+                  placeholder="제목을 입력해 주세요"
+                  onChange={handleChange('title')}
+                  id="titleInput"
+                />
               </FormGroup>
               <FormGroup>
                 <Label>내용</Label>
-                <TextArea placeholder="내용을 입력해 주세요" onChange={handleChange('body')} />
+                <TextArea
+                  placeholder="내용을 입력해 주세요"
+                  onChange={handleChange('body')}
+                  id="bodyInput"
+                />
               </FormGroup>
               <SubmitBox>
                 <SubmitButton onClick={() => handleSubmit()}>작성하기</SubmitButton>

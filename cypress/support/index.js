@@ -14,7 +14,6 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import 'cypress-file-upload';
 import 'cypress-xpath';
 import './commands';
 // eslint-disable-next-line no-undef

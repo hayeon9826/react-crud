@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "@types/redux-actions": "^2.6.2",
     "axios": "^0.27.2",
     "cross-env": "^7.0.3",
+    "cypress-xpath": "^1.6.2",
     "dayjs": "^1.11.2",
     "immutable": "^4.0.0",
     "ramda": "^0.28.0",

@@ -2515,6 +2515,11 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.11.tgz#d66700c5eacfac1940deb4e3ee5642792d85cd33"
   integrity sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==
 
+cypress-xpath@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/cypress-xpath/-/cypress-xpath-1.6.2.tgz#e9d44c3ab694fefa8608f1d977e3e389647f10d3"
+  integrity sha512-mtwJPl840GQPGtb480fKR5vDIcijBHhAVwby5/AIPIT/UVT7UJhM2L42/R+venR7N01I0PoOJErb6UiMbCyUxg==
+
 cypress@^9.6.1:
   version "9.6.1"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-9.6.1.tgz#a7d6b5a53325b3dc4960181f5800a5ade0f085eb"
