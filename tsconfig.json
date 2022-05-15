@@ -15,7 +15,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "types": ["cypress"],
+    "incremental": true
   },
   "include": ["**/*.ts", "**/*.tsx", "./src"],
   "exclude": ["node_modules"]
