@@ -6,7 +6,7 @@ context('React CRUD', () => {
   let base = 'http://localhost:3000';
   let user = '최핀다';
   let title = '핀다 후기입니다.';
-  let postsCount;
+  let postCount;
   let body =
     '여러 곳을 알아봐도 핀다에서 조회한 상품이 제일 만족스러워서 진행하였고, 결과 또한 만족스러웠습니다.';
   let date = dayjs().format('YYYY-MM-DD');

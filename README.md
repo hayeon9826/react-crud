@@ -98,7 +98,7 @@ yarn cypress
 
 ### src/
 
-<table>
+<table style="max-width: 650px;">
    <tbody>
       <tr>
          <th>파일</th>
@@ -125,7 +125,7 @@ yarn cypress
 
 ### src/components
 
-<table>
+<table style="max-width: 650px;">
    <tbody>
       <tr>
          <th>파일</th>
@@ -152,7 +152,7 @@ yarn cypress
 
 ### src/interface
 
-<table>
+<table style="max-width: 650px;" >
    <tbody>
       <tr>
          <th>파일</th>
@@ -167,7 +167,7 @@ yarn cypress
 
 ### src/lib
 
-<table>
+<table style="max-width: 650px;">
    <tbody>
       <tr>
          <th>파일</th>
@@ -182,7 +182,7 @@ yarn cypress
 
 ### src/pages
 
-<table>
+<table style="max-width: 650px;">
    <tbody>
       <tr>
          <th>파일</th>
@@ -201,7 +201,7 @@ yarn cypress
 
 ### src/sagas
 
-<table>
+<table style="max-width: 650px;">
    <tbody>
       <tr>
          <th>파일</th>
@@ -220,7 +220,7 @@ yarn cypress
 
 ### src/slices
 
-<table>
+<table style="max-width: 650px;">
    <tbody>
       <tr>
          <th>파일</th>
@@ -239,7 +239,7 @@ yarn cypress
 
 ### src/styles
 
-<table>
+<table style="max-width: 650px;">
    <tbody>
       <tr>
          <th>파일</th>
@@ -254,7 +254,7 @@ yarn cypress
 
 ### cypress/
 
-<table>
+<table style="max-width: 650px;">
    <tbody>
       <tr>
          <th>파일</th>
@@ -321,7 +321,7 @@ yarn cypress
 
 #### 모바일 버전
 
-<table>
+<table style="max-width: 850px;">
   <tr>
     <td> <img src="https://user-images.githubusercontent.com/38210233/168335076-57470cd2-8dbd-41a6-9446-df3a42866e36.png"  alt="finda mobile main" width="300" ></td>
     <td><img src="https://user-images.githubusercontent.com/38210233/168335171-a351a6ff-6013-4a76-be40-2f6e714d0de7.png" alt="finda mobile show"  width="300" ></td>
