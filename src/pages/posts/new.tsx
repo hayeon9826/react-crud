@@ -84,12 +84,17 @@ const PostNew: React.FC = () => {
                 <Input
                   placeholder="사용자 이름을 입력해 주세요"
                   ref={inputRef}
+                  id="user-input"
                   onChange={handleChange('user')}
                 />
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="label">제목</Label>
-                <Input placeholder="제목을 입력해 주세요" onChange={handleChange('title')} />
+                <Input
+                  placeholder="제목을 입력해 주세요"
+                  onChange={handleChange('title')}
+                  id="title-input"
+                />
               </FormGroup>
               <FormGroup>
                 <Label>내용</Label>

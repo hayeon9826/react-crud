@@ -18,7 +18,9 @@ export const PaddingContainer = styled.div`
   margin-bottom: 0;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h2.attrs(() => ({
+  className: 'post-user'
+}))`
   font-size: 21px;
   @media only screen and (max-width: 600px) {
     font-size: 16px;
@@ -43,7 +45,9 @@ export const GridDiv = styled.div`
   }
 `;
 
-export const Date = styled.span`
+export const Date = styled.span.attrs(() => ({
+  className: 'post-date'
+}))`
   color: #767676;
   font-size: 14px;
   margin-left: 10px;
@@ -54,7 +58,9 @@ export const Date = styled.span`
   }
 `;
 
-export const PostTitle = styled.div`
+export const PostTitle = styled.div.attrs(() => ({
+  className: 'post-title'
+}))`
   color: #767676;
   margin-top: 10px;
 `;
@@ -65,7 +71,9 @@ export const CenterText = styled.div`
   font-size: 14px;
 `;
 
-export const PostBody = styled.div`
+export const PostBody = styled.div.attrs(() => ({
+  className: 'post-body'
+}))`
   margin-top: 18px;
   line-height: 1.6;
   overflow: hidden;

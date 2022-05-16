@@ -41,7 +41,7 @@ const PostShow: React.FC = () => {
   const handleDelete = async () => {
     try {
       // sagas.ts의 removeDataSaga 호출
-      post && post.id !== 0 && (await dispatch(deletePost(post.id)));
+      post && post.id !== 0 && (await dispatch(deletePost(post.id!!)));
       navigate('/', { replace: true });
     } catch (e) {
       navigate('/', { replace: true });
@@ -65,10 +65,13 @@ const PostShow: React.FC = () => {
                       <Title>{post?.user}</Title>
                       <Date>{post?.date}</Date>
                       <More>
-                        <Link to={`/posts/edit/${post?.id}`}>
+                        <Link to={`/posts/edit/${post?.id}`} id="post-edit-btn">
                           <u>수정</u>
                         </Link>
-                        ·<u onClick={() => handleDelete()}>삭제</u>
+                        ·
+                        <u onClick={() => handleDelete()} id="post-delete-btn">
+                          삭제
+                        </u>
                       </More>
                     </FlexDiv>
                     <PostTitle>{post?.title}</PostTitle>

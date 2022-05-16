@@ -43,7 +43,7 @@ const PostEdit: React.FC = () => {
         form.id !== 0 &&
           (await dispatch(
             updatePost({
-              id: post?.id,
+              id: post?.id!,
               post: {
                 user: form.user,
                 title: form.title,

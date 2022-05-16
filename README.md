@@ -11,6 +11,7 @@
 - Redux + Redux-saga + RTK Query
 - styled-components
 - json-server
+- cypress
 
 ## 로컬 실행
 
@@ -37,6 +38,16 @@ npx json-server --watch db.json
 ```
 yarn build
 ```
+
+### 3) E2E 테스트
+
+- 프론트, 백 실행 후 아래 명령어 입력
+
+```
+yarn cypress
+```
+
+- `crud_spec.js` 파일 선택 후 테스트 확인
 
 ## 구현된 기능
 
@@ -241,6 +252,21 @@ yarn build
    </tbody>
 </table>
 
+### cypress/
+
+<table>
+   <tbody>
+      <tr>
+         <th>파일</th>
+         <th>설명</th>
+      </tr>
+      <tr>
+         <td>cypress/*</td>
+         <td> Cypress 테스트 관련 설정 파일, 실행 파일 등</td>
+      </tr>
+   </tbody>
+</table>
+
 ## 사진 첨부
 
 #### PC 버전
@@ -323,6 +349,9 @@ yarn build
 - axios를 완전히 사용하지 않고, rtk-query로 대체하는게 나을지?
 - saga에는 side Effect를 담당하는 액션들을 활용하라고 했는데 단순 fetching만 적용하는게 나을지? (현재는 수정/삭제/생성 모두 적용)
 - saga.ts에 rtk-query 적용 가능한지? (함수 안에 적용 하려고 하면 invalid hook call 에러 남)
+- json-server와 redux로 store도 같이 관리하고 있는데, 생성/삭제 시 store와 함께 db 업데이트도 같이 하는게 맞을지? 아님 둘 중 하나만 하는게 맞을지?
+- api로 생성 요청과 store에 추가 작업 action을 따로 만드는게 맞을지? 아니면 한번에 만드는게 맞을지?
+- 웹에서는 [localhost:3000](http://localhost:3000) 띄워서 해당 호스트로 요청 보내면 생성/수정/삭제가 잘 되지만, cypress에서는 network error가 뜨면서 백엔드로 요청이 안간다. 혹시 추가 설정이 필요한지?
 
 ## 참고 문서
 

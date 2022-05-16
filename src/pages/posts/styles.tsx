@@ -18,7 +18,9 @@ export const PaddingContainer = styled.div`
   margin-bottom: 0;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h2.attrs(() => ({
+  className: 'post-user'
+}))`
   font-size: 21px;
   @media only screen and (max-width: 600px) {
     font-size: 16px;
@@ -65,14 +67,18 @@ export const Label = styled.label`
   font-weight: 700;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input.attrs((props) => ({
+  id: props.id
+}))`
   width: 100%;
   height: 45px;
   border: none;
   border-bottom: 1px solid #d5d5d5;
 `;
 
-export const TextArea = styled.textarea`
+export const TextArea = styled.textarea.attrs(() => ({
+  id: 'body-input'
+}))`
   width: 100%;
   height: 100px;
   border: none;
@@ -108,12 +114,16 @@ export const SubmitButton = styled.button`
   cursor: pointer;
 `;
 
-export const PostTitle = styled.div`
+export const PostTitle = styled.div.attrs(() => ({
+  className: 'post-title'
+}))`
   color: #767676;
   margin-top: 10px;
 `;
 
-export const PostBody = styled.div`
+export const PostBody = styled.div.attrs(() => ({
+  className: 'post-body'
+}))`
   margin-top: 18px;
   line-height: 1.6;
   overflow: hidden;
@@ -166,7 +176,9 @@ export const More = styled.div`
   }
 `;
 
-export const Date = styled.span`
+export const Date = styled.span.attrs(() => ({
+  className: 'post-date'
+}))`
   color: #767676;
   font-size: 14px;
   margin-left: 10px;
