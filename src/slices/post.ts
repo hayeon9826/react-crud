@@ -1,5 +1,5 @@
-import { createSlice, createAction } from '@reduxjs/toolkit';
-import { Post } from '../interface';
+import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit';
+import { Post, updatePostProps } from '../interface';
 
 const initialState: Array<Post> = [
   {
@@ -31,15 +31,15 @@ const UPDATE_POST = 'UPDATE_POST';
 const DELETE_POST = 'DELETE_POST';
 
 // createAction
-export const createPost = createAction(CREATE_POST, (data) => ({
+export const createPost = createAction(CREATE_POST, (data: Post) => ({
   payload: data
 }));
 
-export const updatePost = createAction(UPDATE_POST, (data) => ({
+export const updatePost = createAction(UPDATE_POST, (data: updatePostProps) => ({
   payload: data
 }));
 
-export const deletePost = createAction(DELETE_POST, (data) => ({
+export const deletePost = createAction(DELETE_POST, (data: number) => ({
   payload: data
 }));
 
@@ -48,19 +48,19 @@ export const posts = createSlice({
   name: 'post',
   initialState,
   reducers: {
-    addPost: (state, action) => {
+    addPost: (state, action: PayloadAction<Post>) => {
       state.push({ id: state.length + 1, ...action.payload });
       return state;
     },
-    editPost: (state, action) => {
+    editPost: (state, action: PayloadAction<Post>) => {
       state = state.map((post) => (post.id == action.payload.id ? action.payload : post));
       return state;
     },
-    removePost: (state, action) => {
-      state = state.filter((post) => post.id !== action.payload);
+    removePost: (state, action: PayloadAction<{ id: number }>) => {
+      state = state.filter((post) => post.id !== action.payload.id);
       return state;
     },
-    setPosts: (state, action) => {
+    setPosts: (state, action: PayloadAction<Post[]>) => {
       state = action.payload;
       return state;
     }

@@ -59,7 +59,7 @@ export function* removeDataSaga({ payload: id }: PayloadAction<number>) {
   try {
     const response: AxiosResponse = yield call(API.deletePost, id);
     if (response.status == 200) {
-      yield put(removePost(id));
+      yield put(removePost({ id }));
       yield toast.success('후기를 삭제하였습니다.', {
         autoClose: 1000
       });

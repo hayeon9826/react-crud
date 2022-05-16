@@ -16,7 +16,7 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "preserve",
-    "types": ["cypress"],
+    "types": ["cypress", "node"],
     "incremental": true
   },
   "include": ["**/*.ts", "**/*.tsx", "./src"],
