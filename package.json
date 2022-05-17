@@ -19,7 +19,6 @@
   "bugs": {
     "url": "https://github.com/hayeon9826/react-crud/issues"
   },
-  "proxy": "http://localhost:3000",
   "homepage": "https://github.com/hayeon9826/react-crud#readme",
   "dependencies": {
     "@cypress/webpack-preprocessor": "^5.11.1",

@@ -82,7 +82,7 @@ yarn cypress
 - `posts/show.tsx`의 `handleDelete` 함수 확인
 - '삭제' 버튼 클릭 시 handleDelete 함수 호출
 - slices/post에서 deletePost 액션을 호출함
-- saga.ts에서 removeDataSaga를 통해 데이터를 삭제하고, store(post)에서도 해당 데이터 제거
+- saga.ts에서 removePostSaga를 통해 데이터를 삭제하고, store(post)에서도 해당 데이터 제거
 - 에러가 나면 toast를 띄워서 알려줌
 
 ### 4) 게시글 가져오기
@@ -334,6 +334,10 @@ yarn cypress
   </tr> 
 </table>
 
+#### Cypress 테스트
+
+![react_crud_cypress](https://user-images.githubusercontent.com/38210233/168762357-83fc2e95-2097-44a4-b943-bb5857a71c9d.gif)
+
 ## 개선점 / 궁금한 점
 
 ### 개선점
@@ -341,6 +345,7 @@ yarn cypress
 - redux 사이클 이해 필요
 - redux-saga 이해 필요
 - rtk-query mutation 적용 필요
+- Cypress에서 rtk-query (post/show.tsx) 가 적용되지 않음. 수정 필요함
 
 ### 궁금한 점
 
@@ -351,7 +356,7 @@ yarn cypress
 - saga.ts에 rtk-query 적용 가능한지? (함수 안에 적용 하려고 하면 invalid hook call 에러 남)
 - json-server와 redux로 store도 같이 관리하고 있는데, 생성/삭제 시 store와 함께 db 업데이트도 같이 하는게 맞을지? 아님 둘 중 하나만 하는게 맞을지?
 - api로 생성 요청과 store에 추가 작업 action을 따로 만드는게 맞을지? 아니면 한번에 만드는게 맞을지?
-- 웹에서는 [localhost:3000](http://localhost:3000) 띄워서 해당 호스트로 요청 보내면 생성/수정/삭제가 잘 되지만, cypress에서는 network error가 뜨면서 백엔드로 요청이 안간다. 혹시 추가 설정이 필요한지?
+- 웹에서는 [localhost:3000](http://localhost:3000) 띄워서 해당 호스트로 요청 보내면 생성/수정/삭제가 잘 되지만, cypress에서는 network error가 뜨면서 백엔드로 요청이 안간다. 혹시 추가 설정이 필요한지? -> (해결: 크롬 껐다 키면 됨)
 
 ## 참고 문서
 

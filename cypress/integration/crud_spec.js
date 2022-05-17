@@ -2,8 +2,7 @@
 import dayjs from 'dayjs';
 
 context('React CRUD', () => {
-  let url = Cypress.config().baseUrl;
-  let base = 'http://localhost:3000';
+  let url = 'http://localhost:8080';
   let user = '최핀다';
   let title = '핀다 후기입니다.';
   let postCount;
@@ -12,60 +11,29 @@ context('React CRUD', () => {
   let date = dayjs().format('YYYY-MM-DD');
 
   beforeEach(() => {
-    cy.intercept('GET', `${base}/posts`, {
-      statusCode: 200,
-      body: [
-        {
-          id: 1,
-          user: '김핀다',
-          title: '후기입니다.',
-          body: '비대면으로 쉽게 대출 받을 수 있어서 너무나 기분이 좋았습니다~~~^^',
-          date: '2022-05-10'
-        },
-        {
-          id: 2,
-          user: '이핀다',
-          title: '앱 사용 후기',
-          body: '2금융권 대출을 청산하고 1금융권으로 대출을 갈아탔습니다. 2금융권에 한번 대출을 받은 뒤로 1금융권은 아예 한도자체가 없어 최대 18%고금리를 이용했었는데 광주은행 6%대로 여러번의 대환대출 끝에 안착했습니다. 감사합니다.',
-          date: '2022-05-10'
-        },
-        {
-          title: '추천합니다.',
-          body: '급하게 필요한 자금을 빠르고 편리하게 받을 수 있어서 큰 도움이 되었습니다.',
-          user: '박핀다',
-          date: '2022-05-15',
-          id: 3
-        },
-        {
-          title: 't',
-          body: 't',
-          user: 't',
-          date: '2022-05-16',
-          id: 4
-        }
-      ]
-    });
     cy.viewport('macbook-11');
     cy.visit(url);
+    cy.wait(1000);
   });
 
-  // it('접속 및 후기 목록 불러오기', () => {
-  //   cy.intercept(`${url}/posts`).as('getPosts');
-  //   cy.wait('@getPosts').then((interception) => {
-  //     // we can now access the low level interception
-  //     // that contains the request body,
-  //     // response body, status, etc
-  //     console.log(interception);
-  //   });
-  // });
+  it('리스트에서 후기 갯수 확인', () => {
+    cy.get('.post-title')
+      .should('have.length.greaterThan', 1)
+      .its('length')
+      .then((n) => {
+        postCount = n;
+      });
+  });
 
   it('후기 작성하기', () => {
+    cy.visit(url);
     cy.get('#post-new-btn').click();
     // 폼 입력
     cy.get('#user-input').type(`${user}{enter}`);
     cy.get('#title-input').type(`${title}{enter}`);
-    cy.get('#body-input').type(`${body}{enter}`);
+    cy.get('#body-input').type(`${body}{enter}`, { force: true });
     cy.get('button').click();
+    cy.wait(1000);
 
     // 리스트 첫번째 후기가 방금 생성한 후기여야 함
     cy.get('.post-title')
@@ -84,7 +52,9 @@ context('React CRUD', () => {
 
   it('상세 페이지 접속', () => {
     cy.get('.post-show-btn').first().click({ force: true });
-    // 상세 페이지 데이터가 방금 생성한 후기여야 함
+
+    // 상세 페이지의 가장 최근 데이터가 방금 생성한 후기여야 함
+    cy.wait(1000);
     cy.get('.post-title')
       .first()
       .should(($el) => expect($el.text().trim()).to.equal(title));
@@ -100,15 +70,23 @@ context('React CRUD', () => {
   });
 
   it('후기 수정하기', () => {
+    // 상세 페이지 접속
     cy.get('.post-show-btn').first().click({ force: true });
+    cy.wait(1000);
     // '수정' 버튼 클릭
     cy.get('#post-edit-btn').click({ force: true });
+
     // 폼 입력
+    cy.get('#user-input').clear();
     cy.get('#user-input').type(`[수정] ${user}{enter}`);
+    cy.get('#title-input').clear();
     cy.get('#title-input').type(`[수정] ${title}{enter}`);
+    cy.get('#body-input').clear();
     cy.get('#body-input').type(`[수정] ${body}{enter}`);
     cy.get('button').click();
-
+    cy.wait(500);
+    cy.visit(url);
+    cy.wait(500);
     // 리스트 첫번째 후기가 방금 수정한 후기여야 함
     cy.get('.post-title')
       .first()
@@ -121,11 +99,17 @@ context('React CRUD', () => {
       .should(($el) => expect($el.text().trim()).to.equal(`[수정] ${user}`));
     cy.get('.post-date')
       .first()
-      .should(($el) => expect($el.text().trim()).to.equal(`[수정] ${date}`));
+      .should(($el) => expect($el.text().trim()).to.equal(`${date}`));
   });
 
   it('후기 삭제하기', () => {
+    // 상세 페이지 접속
     cy.get('.post-show-btn').first().click({ force: true });
+    cy.wait(1000);
+    // '삭제' 버튼 클릭
     cy.get('#post-delete-btn').click({ force: true });
+    cy.wait(500);
+    // 데이터 지우고 총 갯수가 처음 리스트 갯수와 같아야 함
+    cy.get('.post-title').should('have.length.greaterThan', 1).should('have.length', postCount);
   });
 });

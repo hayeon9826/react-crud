@@ -17,9 +17,12 @@
 import 'cypress-xpath';
 import './commands';
 // eslint-disable-next-line no-undef
-Cypress.on('uncaught:exception', () => {
-  return false;
-});
+// Cypress.on('uncaught:exception', () => {
+//   return false;
+// });
 
+Cypress.on('window:before:load', (win) => {
+  delete win.fetch;
+});
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

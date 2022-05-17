@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Container,
   PaddingContainer,
@@ -15,7 +15,8 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { useGetPostQuery } from '../../../src/lib/api';
+import { useGetPostQuery, BASE_URL } from '../../../src/lib/api';
+import axios from 'axios';
 import { deletePost } from '../../slices/post';
 import { AppDispatch } from 'src/store';
 
@@ -24,23 +25,48 @@ const PostShow: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {
-    data: post,
-    isFetching,
-    isLoading
-  } = useGetPostQuery(params?.id || '', {
-    refetchOnMountOrArgChange: true,
-    skip: !params?.id
-  });
+  // const {
+  //   data: post,
+  //   isFetching,
+  //   isLoading
+  // } = useGetPostQuery(params?.id || '', {
+  //   refetchOnMountOrArgChange: true,
+  //   skip: !params?.id
+  // });
 
   useEffect(() => {
     // scroll to top
     window.scrollTo(0, 0);
   }, []);
 
+  const [post, setPost] = useState({
+    id: 0,
+    user: '',
+    title: '',
+    body: '',
+    date: ''
+  });
+  useEffect(() => {
+    const fetch = async () => {
+      // rtk query 사용해서 가져오기로 변경 필요
+      const res = await axios({
+        method: 'get',
+        url: `${BASE_URL}/post/${params.id}`,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
+      await setPost(res.data);
+    };
+    if (params.id) {
+      fetch();
+    }
+  }, [params]);
+
   const handleDelete = async () => {
     try {
-      // sagas.ts의 removeDataSaga 호출
+      // sagas.ts의 removePostSaga 호출
       post && post.id !== 0 && (await dispatch(deletePost(post.id!!)));
       navigate('/', { replace: true });
     } catch (e) {
@@ -55,14 +81,14 @@ const PostShow: React.FC = () => {
             <Title>후기 상세</Title>
           </FlexDiv>
           <PostDiv>
-            {isFetching || isLoading ? (
+            {false ? (
               <small>잠시만 기다려 주세요...</small>
             ) : (
               <PostCard>
                 {post ? (
                   <>
                     <FlexDiv>
-                      <Title>{post?.user}</Title>
+                      <Title className="post-user">{post?.user}</Title>
                       <Date>{post?.date}</Date>
                       <More>
                         <Link to={`/posts/edit/${post?.id}`} id="post-edit-btn">

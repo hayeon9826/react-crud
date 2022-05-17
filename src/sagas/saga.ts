@@ -55,7 +55,7 @@ export function* updatePostSaga({ payload }: PayloadAction<updatePostProps>) {
 }
 
 // post 데이터 삭제하기
-export function* removeDataSaga({ payload: id }: PayloadAction<number>) {
+export function* removePostSaga({ payload: id }: PayloadAction<number>) {
   try {
     const response: AxiosResponse = yield call(API.deletePost, id);
     if (response.status == 200) {
@@ -90,7 +90,7 @@ export default function* rootSaga() {
   // 'UPDATE_POST' 액션 dispatch 시 post 데이터 수정
   yield takeEvery(sagaActions.UPDATE_POST, updatePostSaga);
   // 'DELETE_POST' 액션 dispatch 시 post 데이터 삭제
-  yield takeEvery(sagaActions.DELETE_POST, removeDataSaga);
+  yield takeEvery(sagaActions.DELETE_POST, removePostSaga);
   // 'RESET_FORM' 액션 dispatch 시 form 리셋
   yield takeEvery(sagaActions.RESET_FORM, resetFormSaga);
 }

@@ -43,7 +43,7 @@ const List: React.FC = () => {
             posts.map((data: Post) => (
               <PostCard key={data.id}>
                 <FlexDiv>
-                  <Title>{data.user}</Title>
+                  <Title className="post-user">{data.user}</Title>
                   <Date>{data.date}</Date>
                   <Link to={`/posts/${data.id}`} className="post-show-btn">
                     <More>더보기</More>

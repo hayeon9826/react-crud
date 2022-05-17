@@ -18,8 +18,8 @@ export const PaddingContainer = styled.div`
   margin-bottom: 0;
 `;
 
-export const Title = styled.h2.attrs(() => ({
-  className: 'post-user'
+export const Title = styled.h2.attrs((props) => ({
+  className: props.className || 'title'
 }))`
   font-size: 21px;
   @media only screen and (max-width: 600px) {
