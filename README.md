@@ -336,7 +336,7 @@ yarn cypress
 
 #### Cypress 테스트
 
-![react_crud_cypress](https://user-images.githubusercontent.com/38210233/168762357-83fc2e95-2097-44a4-b943-bb5857a71c9d.gif)
+![react-crud-cypress](https://user-images.githubusercontent.com/38210233/168766643-09825126-e4b7-4f4a-9501-65b0f8492cf6.gif)
 
 ## 개선점 / 궁금한 점
 
