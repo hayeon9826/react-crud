@@ -342,10 +342,12 @@ yarn cypress
 
 ### 개선점
 
-- redux 사이클 이해 필요
-- redux-saga 이해 필요
+- redux (slice/post)에서 코드 정리 필요 (createSlice, createAction 둘 다 사용해도 되는지?)
+- redux useSelector를 바로 사용하고 있는데, memoization으로 최적화 해야함 [참고](https://kyounghwan01.github.io/blog/React/redux/redux-toolkit/#useselector-%E1%84%8B%E1%85%A1%E1%86%AB%E1%84%90%E1%85%B5%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB)
+- redux-saga 사이드 이펙트 관련 코드 정리 필요.
 - rtk-query mutation 적용 필요
-- Cypress에서 rtk-query (post/show.tsx) 가 적용되지 않음. 수정 필요함
+- Cypress에서 rtk-query (post/show.tsx) 가 작동하지 않는 문제
+- api.ts 에서 axios 대신 rtk-query로 변경 필요
 
 ### 궁금한 점
 

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Form } from '../interface';
 
 const initialState: Form = {
@@ -14,7 +14,7 @@ export const form = createSlice({
   initialState,
   reducers: {
     // form 값 변경 및 리셋
-    setFormSlice: (state, action) => {
+    setFormSlice: (state, action: PayloadAction<Form>) => {
       state = action.payload;
       return state;
     }
