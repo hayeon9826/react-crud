@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   Container,
   PaddingContainer,
@@ -14,14 +14,13 @@ import {
   SubmitButton
 } from './styles';
 import { useParams } from 'react-router';
-import axios from 'axios';
 import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setFormSlice } from '../../slices/form';
 import { updatePost } from '../../slices/post';
 import { RootState, AppDispatch } from '../../../src/store';
-import { useGetPostQuery, BASE_URL } from '../../../src/lib/api';
+import { useGetPostQuery } from '../../../src/lib/api';
 import { toast } from 'react-toastify';
 import { sagaActions } from '../../../src/sagas/sagaAction';
 
@@ -38,36 +37,10 @@ const PostEdit: React.FC = () => {
       dispatch(setFormSlice({ ...form, [prop]: event.target.value }));
     };
 
-  // const { data: post } = useGetPostQuery(params?.id || '', {
-  //   refetchOnMountOrArgChange: true,
-  //   skip: !params?.id
-  // });
-
-  const [post, setPost] = useState({
-    id: 0,
-    user: '',
-    title: '',
-    body: '',
-    date: ''
+  const { data: post } = useGetPostQuery(params?.id || '', {
+    refetchOnMountOrArgChange: true,
+    skip: !params?.id
   });
-
-  useEffect(() => {
-    const fetch = async () => {
-      // rtk query 사용해서 가져오기로 변경 필요
-      const res = await axios({
-        method: 'get',
-        url: `${BASE_URL}/post/${params.id}`,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          'Access-Control-Allow-Origin': '*'
-        }
-      });
-      await setPost(res.data);
-    };
-    if (params.id) {
-      fetch();
-    }
-  }, [params]);
 
   useEffect(() => {
     if (post?.id) {
@@ -79,8 +52,6 @@ const PostEdit: React.FC = () => {
       inputRef.current.focus();
     }
   }, [post]);
-
-  console.log(post, '@@@post');
 
   const handleSubmit = async () => {
     try {
