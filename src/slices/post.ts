@@ -25,12 +25,12 @@ const initialState: Array<Post> = [
   }
 ];
 
-// 액션 타입
-const CREATE_POST = 'CREATE_POST';
-const UPDATE_POST = 'UPDATE_POST';
-const DELETE_POST = 'DELETE_POST';
+// action 타입
+const CREATE_POST = 'POST/CREATE_POST';
+const UPDATE_POST = 'POST/UPDATE_POST';
+const DELETE_POST = 'POST/DELETE_POST';
 
-// createAction
+// action 객체
 export const createPost = createAction(CREATE_POST, (data: Post) => ({
   payload: data
 }));
@@ -43,10 +43,11 @@ export const deletePost = createAction(DELETE_POST, (data: number) => ({
   payload: data
 }));
 
-// createSlice
+// createSlice (actionTypes, actions, reducer를 하나의 모듈로 묶어서 관리)
 export const posts = createSlice({
   name: 'post',
   initialState,
+  // reducer 함수
   reducers: {
     addPost: (state, action: PayloadAction<Post>) => {
       state.push({ id: state.length + 1, ...action.payload });

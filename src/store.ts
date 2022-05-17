@@ -7,18 +7,18 @@ import rootSaga from './sagas/saga';
 import { getPostApi } from './lib/api';
 
 const sagaMiddleware = createSagaMiddleware();
+// store 생성 및 리듀서 등록
 export const store = configureStore({
   reducer: {
     posts,
     form,
-    // 특정 top-level slice에서 생성된 리듀서를 추가
+    // getPostApi top-level slice에서 생성된 리듀서를 추가
     [getPostApi.reducerPath]: getPostApi.reducer
   },
   devTools: process.env.NODE_ENV !== 'production',
   // 캐싱, 요청 취소, 폴링 등등 유용한 rtk-query의 기능들을 위한 api 미들웨어 추가
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(getPostApi.middleware, sagaMiddleware)
-  // middleware: [sagaMiddleware]
 });
 sagaMiddleware.run(rootSaga);
 // 옵셔널, refetchOnFocus/refetchOnReconnect 기능을 위해 필요함
