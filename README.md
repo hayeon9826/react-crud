@@ -363,7 +363,8 @@ yarn cypress
 
 ## 참고 문서
 
-- 프로젝트를 진행하며 참고했던 문서들입니다.
+> 프로젝트를 진행하며 참고했던 문서들입니다.
+
 - [redux 게시판 만들기](https://mjn5027.tistory.com/35)
 - [React-router-dom 프로젝트 참고](https://github.com/LeeMir/react-cookie-board)
 - [redux 공식 도큐](https://redux-toolkit.js.org/tutorials/quick-start)
