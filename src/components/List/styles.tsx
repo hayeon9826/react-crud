@@ -88,16 +88,8 @@ export const PostCard = styled.div`
   }
   height: 300px;
   cursor: pointer;
-  transition-property: -webkit-transform;
-  transition-property: transform;
-  transition-property: transform, -webkit-transform;
-  transition-timing-function: linear;
-  transition-duration: 0.15s;
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
   background: white;
   border-radius: 0.5rem;
-  --bg-opacity: 1;
   position: relative;
   display: block;
   outline: 2px solid transparent;

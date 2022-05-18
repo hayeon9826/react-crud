@@ -30,7 +30,8 @@ const CREATE_POST = 'POST/CREATE_POST';
 const UPDATE_POST = 'POST/UPDATE_POST';
 const DELETE_POST = 'POST/DELETE_POST';
 
-// action 객체
+// action 생성 함수
+// createAction의 첫번째 인자는 type
 export const createPost = createAction(CREATE_POST, (data: Post) => ({
   payload: data
 }));
