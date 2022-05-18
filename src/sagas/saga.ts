@@ -13,7 +13,7 @@ export function* getPostsSaga() {
   try {
     // api 통신 시 call (동기 함수 호출)
     const result: AxiosResponse = yield call(API.getPosts);
-    // put은 함수를 바로 dispatch함
+    // put은 특정 액션을 바로 dispatch함
     yield put(setPosts(result.data));
   } catch (e) {
     yield console.log(e);
@@ -86,7 +86,7 @@ export function* resetFormSaga() {
 
 // 모든 Saga들을 한번에 시작하기 위한 단일 entry point
 export default function* rootSaga() {
-  // takeEvery -> 한번 실행되도, 이벤트 계속 리슨
+  // takeEvery -> 한번 실행되도, 이벤트 계속 리슨 (모든 request에 대해 태스크 실행)
   // takeLatest -> 클릭 실수로 2번 했을때, 앞 이벤트 무시 마지막 이벤트 실행
 
   // 'FETCH_POST' 액션 dispatch 시 post 데이터 가져오기

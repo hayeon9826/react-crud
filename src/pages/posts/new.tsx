@@ -26,6 +26,7 @@ const PostNew: React.FC = () => {
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const navigate = useNavigate();
   const form = useSelector((state: RootState) => state.form);
+  // dispatchs는 액션 객체를 넘겨줘서 상태를 업데이트 하는 유일한 방법 (= 이벤트 트리거)
   const dispatch: AppDispatch = useDispatch();
 
   const handleChange =

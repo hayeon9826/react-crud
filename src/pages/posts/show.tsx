@@ -20,6 +20,7 @@ import { deletePost } from '../../slices/post';
 import { AppDispatch } from 'src/store';
 
 const PostShow: React.FC = () => {
+  // URL 인자들의 key/value(키/값) 짝들의 객체를 반환
   const params = useParams();
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();

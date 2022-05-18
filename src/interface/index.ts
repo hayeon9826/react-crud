@@ -1,4 +1,5 @@
-// interface 타입 정의
+// interface 타입 정의 (선언적 확장 가능)
+
 export interface Post {
   id?: number;
   user: string;

@@ -348,6 +348,7 @@ yarn cypress
 - rtk-query mutation 적용 필요
 - Cypress에서 rtk-query (post/show.tsx) 가 작동하지 않는 문제
 - api.ts 에서 axios 대신 rtk-query로 변경 필요
+- 더 구체적인 테스트 케이스 적용, redux 코드 테스트 필요
 
 ### 궁금한 점
 
@@ -362,6 +363,7 @@ yarn cypress
 
 ## 참고 문서
 
+- 프로젝트를 진행하며 참고했던 문서들입니다.
 - [redux 게시판 만들기](https://mjn5027.tistory.com/35)
 - [React-router-dom 프로젝트 참고](https://github.com/LeeMir/react-cookie-board)
 - [redux 공식 도큐](https://redux-toolkit.js.org/tutorials/quick-start)
@@ -371,6 +373,8 @@ yarn cypress
 - [Redux-Saga 설명 영상 (FE Conference, Toss)](https://www.youtube.com/watch?v=UxpREAHZ7Ck)
 - [Redux toolkit 사내 도큐](https://findainc.atlassian.net/wiki/spaces/FF/pages/2689302595/Redux+Toolkit)
 - [Redux saga 사내 도큐](https://findainc.atlassian.net/wiki/spaces/FF/pages/2757230660/redux-saga+tutorial)
+- [Redux-Saga 공식 문서 (번역)](https://mskims.github.io/redux-saga-in-korean/)
 - [Redux toolkit + redux saga](https://blog.logrocket.com/smarter-redux-redux-toolkit/)
 - [리액트 Saga + Toolkit](https://mjn5027.tistory.com/39)
 - [rtk Query 문서](https://junsangyu.gitbook.io/rtk-query/)
+- [Redux 어떻게 써야 잘 썼다고 소문이 날까?](https://velog.io/@velopert/using-redux-in-2021#redux-toolkit%EC%9D%80-%EC%9D%B4%EC%A0%9C-%ED%95%84%EC%88%98%ED%85%9C%EC%9E%85%EB%8B%88%EB%8B%A4)

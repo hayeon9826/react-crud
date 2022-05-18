@@ -25,6 +25,7 @@ import { toast } from 'react-toastify';
 import { sagaActions } from '../../../src/sagas/sagaAction';
 
 const PostEdit: React.FC = () => {
+  // URL 인자들의 key/value(키/값) 짝들의 객체를 반환
   const params = useParams();
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const navigate = useNavigate();

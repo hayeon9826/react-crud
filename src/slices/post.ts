@@ -30,7 +30,8 @@ const CREATE_POST = 'POST/CREATE_POST';
 const UPDATE_POST = 'POST/UPDATE_POST';
 const DELETE_POST = 'POST/DELETE_POST';
 
-// action 객체
+// createAction: 주어진 액션 타입 문자열로 액션 크리에이터 함수를 생성
+// createAction의 첫번째 인자는 type
 export const createPost = createAction(CREATE_POST, (data: Post) => ({
   payload: data
 }));
@@ -43,11 +44,11 @@ export const deletePost = createAction(DELETE_POST, (data: number) => ({
   payload: data
 }));
 
-// createSlice (actionTypes, actions, reducer를 하나의 모듈로 묶어서 관리)
+// slice (initialState, actionTypes, actions, reducer를 하나의 모듈로 묶어서 관리)
 export const posts = createSlice({
   name: 'post',
   initialState,
-  // reducer 함수
+  // reducer 함수 (현재 상태와 액션 객체를 받아, 필요하다면 새로운 상태를 리턴하는 함수)
   reducers: {
     addPost: (state, action: PayloadAction<Post>) => {
       state.push({ id: state.length + 1, ...action.payload });
